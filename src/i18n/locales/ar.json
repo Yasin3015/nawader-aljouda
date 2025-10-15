@@ -1,5 +1,31 @@
 {
   "welcome": "مرحبًا، هذا موقع تجارة إلكترونية",
   "about": "من نحن",
-  "contact": "اتصل بنا"
+  "search": {
+    "placeholder": "ابحث...",
+    "button": "بحث",
+    "loading": "جاري البحث...",
+    "noResults": "لا يوجد عنصر بهذا الاسم"
+  },
+  "contact": "اتصل بنا",
+  "buyIndustrialWaste": "اشتري النفايات الصناعية",
+  "safelyAndEfficiently": "بأمان وكفاءة",
+  "saleUpTo": "خصم حتى",
+  "off": "خصم",
+  "browseNow": "تصفح الآن",
+
+  "summerSale": "عرض الصيف",
+  "discount75": "خصم 75%",
+  "bestDeal": "أفضل صفقة",
+  "dealOfMonth": "صفقة الشهر الخاصة",
+  "shopNow": "تسوق الآن",
+
+  "freeShipping": "شحن مجاني",
+  "freeShippingDesc": "شحن مجاني على جميع الطلبات",
+  "support247": "دعم العملاء 24/7",
+  "supportDesc": "دعم فوري ومتاح دائمًا",
+  "securePayment": "دفع آمن 100%",
+  "securePaymentDesc": "نضمن أن أموالك في أمان",
+  "moneyBack": "ضمان استرجاع الأموال",
+  "moneyBackDesc": "ضمان استرجاع لمدة 30 يومًا"
 }
