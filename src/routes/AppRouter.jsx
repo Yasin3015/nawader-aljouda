@@ -21,6 +21,9 @@ const Browse = lazy(() => import("../pages/user/Browse"));
 const Login = lazy(() => import("../pages/auth/Login"));
 const Signup = lazy(() => import("../pages/auth/Signup"));
 
+// 📁 Not Found Page
+const NotFound = lazy(() => import("../pages/NotFound"));
+
 // 🌀 Loading Spinner
 const Loading = () => (
   <div className="flex justify-center items-center min-h-screen text-[var(--color-primary)]">
@@ -149,7 +152,11 @@ const AppRouter = createBrowserRouter([
   // ========================
   {
     path: "*",
-    element: <Navigate to="/" replace />,
+    element: (
+      <Suspense fallback={<Loading />}>
+        <NotFound />
+      </Suspense>
+    ),
   },
 ]);
 
