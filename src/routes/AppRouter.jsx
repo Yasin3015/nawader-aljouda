@@ -4,7 +4,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 // 🧱 Layouts
 const UserLayout = lazy(() => import("../layouts/UserLayout"));
 // const DashboardLayout = lazy(() => import("../layouts/DashboardLayout"));
-// const AuthLayout = lazy(() => import("../layouts/AuthLayout"));
+const AuthLayout = lazy(() => import("../Layouts/AuthLayout"));
 
 // 📄 User Pages
 const Home = lazy(() => import("../pages/user/Home"));
@@ -18,8 +18,8 @@ const Browse = lazy(() => import("../pages/user/Browse"));
 // const Settings = lazy(() => import("../pages/dashboard/Settings"));
 
 // 🔐 Auth Pages
-// const Login = lazy(() => import("../pages/auth/Login"));
-// const Signup = lazy(() => import("../pages/auth/Signup"));
+const Login = lazy(() => import("../pages/auth/Login"));
+const Signup = lazy(() => import("../pages/auth/Signup"));
 
 // 🌀 Loading Spinner
 const Loading = () => (
@@ -117,32 +117,32 @@ const AppRouter = createBrowserRouter([
   // ========================
   // 🔐 Auth Routes
   // ========================
-//   {
-//     path: "/auth",
-//     element: (
-//       <Suspense fallback={<Loading />}>
-//         <AuthLayout />
-//       </Suspense>
-//     ),
-//     children: [
-//       {
-//         path: "login",
-//         element: (
-//           <Suspense fallback={<Loading />}>
-//             <Login />
-//           </Suspense>
-//         ),
-//       },
-//       {
-//         path: "signup",
-//         element: (
-//           <Suspense fallback={<Loading />}>
-//             <Signup />
-//           </Suspense>
-//         ),
-//       },
-//     ],
-//   },
+  {
+    path: "/auth",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <AuthLayout />
+      </Suspense>
+    ),
+    children: [
+      {
+        path: "login",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Login />
+          </Suspense>
+        ),
+      },
+      {
+        path: "signup",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Signup />
+          </Suspense>
+        ),
+      },
+    ],
+  },
 
   // ========================
   // 🚫 404 Redirect
