@@ -9,34 +9,36 @@ import side2 from '../../../assets/images/sideCard2.jpg'
 const HeroSection = () => {
   return (
     <section className="py-8 md:py-12 bg-[var(--color-white)]">
-      <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-stretch">
-          {/* Main Banner */}
-          <div className="lg:col-span-2 h-full">
-            <HeroMainCard />
-          </div>
+  <Container>
+    <div className="grid grid-cols-1 grid-rows-2 lg:grid-rows-1 lg:grid-cols-3 gap-5 items-stretch">
+      {/* Main Card */}
+      <div className="h-full lg:col-span-2">
+        <HeroMainCard />
+      </div>
 
-          {/* Side Banners */}
-          <div className="flex flex-col gap-5 h-full">
-            <HeroSideCard
-              titleKey="summerSale"
-              subtitleKey="discount75"
-              buttonKey="shopNow"
-              bg={side}
-            />
-            <HeroSideCard
-              titleKey="bestDeal"
-              subtitleKey="dealOfMonth"
-              buttonKey="shopNow"
-              bg={side2}
-            />
-          </div>
-        </div>
+      {/* Side Cards */}
+      <div className="flex sm:flex-col md:flex-row lg:flex-col gap-5 h-full lg:col-span-1">
+        <HeroSideCard
+          titleKey="summerSale"
+          subtitleKey="discount75"
+          buttonKey="shopNow"
+          bg={side}
+          number={1}
+        />
+        <HeroSideCard
+          titleKey="bestDeal"
+          subtitleKey="dealOfMonth"
+          buttonKey="shopNow"
+          bg={side2}
+          number={2}
+        />
+      </div>
+    </div>
 
-        {/* Features Bar */}
-        <HeroFeaturesBar />
-      </Container>
-    </section>
+    <HeroFeaturesBar />
+  </Container>
+</section>
+
   );
 };
 

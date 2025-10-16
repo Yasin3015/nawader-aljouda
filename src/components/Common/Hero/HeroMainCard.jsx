@@ -1,7 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import Button from "../../UI//Button";
-import heroImage from "../../../assets/images/mainCard.jpg"; // استبدلها بمسارك
+import arrow from '../../../assets/icons/primaryArrow.svg'
+import heroImage from "../../../assets/images/mainCard.jpg"; 
 
 const HeroMainCard = () => {
   const { t } = useTranslation();
@@ -24,11 +25,11 @@ const HeroMainCard = () => {
           </span>
         </h1>
 
-        <div className="mt-4">
+        <div className="mt-4 border-l-2 border-l-[var(--color-soft-primary)] px-2">
           <p className="text-sm md:text-base text-gray-200">
             {t("saleUpTo")}{" "}
-            <span className="bg-[var(--color-primary)] text-white px-2 py-1 rounded-md text-sm md:text-base font-semibold">
-              30% OFF
+            <span className="bg-[var(--color-hard-primary)] text-white px-2 rounded-md text-xl font-semibold">
+              {t("off")}
             </span>
           </p>
           <p className="text-xs md:text-sm text-gray-300 mt-1">
@@ -37,11 +38,11 @@ const HeroMainCard = () => {
         </div>
 
         <Button
-          variant="primary"
           size="md"
-          className="mt-6 w-fit bg-[var(--color-soft-primary)] text-[var(--color-white)] hover:bg-[var(--color-hard-primary)]"
+          className="cursor-pointer mt-6 w-fit bg-[var(--color-white)] !text-[var(--color-primary)] rounded-full"
         >
           {t("browseNow")}
+          <img src={arrow} alt={t("directionArrow")} className="px-1 h-3" />
         </Button>
       </div>
     </div>
