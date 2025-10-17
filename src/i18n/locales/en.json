@@ -30,5 +30,63 @@
   "securePayment": "100% Secure Payment",
   "securePaymentDesc": "We ensure your money is safe",
   "moneyBack": "Money-Back Guarantee",
-  "moneyBackDesc": "30 Days Money Back Guarantee"
+  "moneyBackDesc": "30 Days Money Back Guarantee",
+  "footer": {
+    "brandName": "Nawader Al-Jouda",
+    "description": "Morbi cursus porttitor enim lobortis molestie. Duis gravida turpis dui, eget bibendum magna congue nec.",
+    "contactPhone": "(219) 555–0114",
+    "contactEmail": "Proxy@gmail.com",
+    "sections": {
+      "account": {
+        "title": "My Account",
+        "links": {
+          "account": "My Account",
+          "orderHistory": "Order History",
+          "cart": "Shopping Cart",
+          "wishlist": "Wishlist"
+        }
+      },
+      "helps": {
+        "title": "Helps",
+        "links": {
+          "contact": "Contact",
+          "faqs": "Faqs",
+          "terms": "Terms & Condition",
+          "privacy": "Privacy Policy"
+        }
+      },
+      "proxy": {
+        "title": "Proxy",
+        "links": {
+          "about": "About",
+          "shop": "Shop",
+          "product": "Product",
+          "track": "Track Order"
+        }
+      }
+    },
+    "bottom": {
+      "rights": "All Rights Reserved",
+      "year": "© 2025",
+      "payments": {
+        "apple": "Apple Pay",
+        "visa": "Visa",
+        "master": "Mastercard",
+        "secure": "Secure Payment"
+      }
+    }
+  },
+  "goalSection": {
+    "title": "Our Goal",
+    "quote": {
+      "text1":"Providing reliable and distinguished service in the field of scrap buying, selling, and retail, while guaranteeing",
+      "text2":" the best price & quality ",
+      "text3": "in the market",
+      "author": {
+        "name": "Candice Wu", 
+        "position": "Product Manager",
+        "company": "StayPlus"
+      }
+    }
+  }
 }

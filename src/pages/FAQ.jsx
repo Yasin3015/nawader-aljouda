@@ -32,16 +32,7 @@ const FAQ = () => {
 
   return (
     <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-8">
-      {/* Left side - Image */}
-      <div className="w-full md:w-1/2">
-        <img 
-          src={worker} 
-          alt="Worker in safety equipment" 
-          className="w-full max-w-lg mx-auto"
-        />
-      </div>
 
-      {/* Right side - Content */}
       <div className="w-full md:w-1/2">
         <h1 className="text-4xl font-bold mb-8">
           Welcome, Let's Talk<br />
@@ -71,6 +62,13 @@ const FAQ = () => {
             </div>
           ))}
         </div>
+      </div>
+       <div className="w-full md:w-1/2">
+        <img 
+          src={worker} 
+          alt="Worker in safety equipment" 
+          className="w-full max-w-lg mx-auto"
+        />
       </div>
     </div>
   );

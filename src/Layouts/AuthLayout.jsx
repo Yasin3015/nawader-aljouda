@@ -1,16 +1,19 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
+import ResponsiveNavbar from "../components/Layout/Navbar/ResponsiveNavbar";
+import Footer from "../components/Layout/Footer";
 
 const AuthLayout = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[var(--color-gray-1)] p-4">
-      <div className="w-full max-w-md bg-white rounded-[var(--radius-lg)] shadow-md p-6">
-        <div className="flex items-center justify-center mb-4">
-          <Link to="/" className="text-xl font-semibold text-[var(--color-primary)]">Nawader</Link>
+    <>
+      <ResponsiveNavbar />
+      <div className=" flex justify-center items-center bg-[var(--color-gray-1)] p-4 py-20">
+        <div className="w-full max-w-md  bg-white rounded-[var(--radius-lg)] shadow-md p-6">
+          <Outlet />
         </div>
-        <Outlet />
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
