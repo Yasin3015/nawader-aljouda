@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 
 // 🧱 Layouts
-const UserLayout = lazy(() => import("../layouts/UserLayout"));
+const UserLayout = lazy(() => import("../Layouts/UserLayout"));
 const AuthLayout = lazy(() => import("../Layouts/AuthLayout"));
 
 // 📄 User Pages

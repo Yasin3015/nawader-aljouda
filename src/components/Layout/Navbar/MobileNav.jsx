@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Container from "../../UI/Container";
 import MobileMenu from "./MobileMenu";
+import { useCart } from "../../../contexts/CartContext";
 import search from '../../../assets/icons/search.svg';
 import cart from '../../../assets/icons/bag.svg';
 import menu from '../../../assets/icons/menu.svg';
@@ -12,6 +13,7 @@ const MobileNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const currentPage = location.pathname.split("/").filter(Boolean).pop() || "Home";
+  const { totalItems, toggleCart } = useCart();
   const handleMenuToggle = () => setIsMenuOpen(!isMenuOpen);
 
   return (
@@ -19,7 +21,14 @@ const MobileNav = () => {
       <div className="lg:hidden bg-white border-b border-gray-200">
         <Container className="flex items-center justify-between py-2">
           <div className="flex items-center gap-3">
-            <img src={cart} alt="Cart" className="w-6 h-6" />
+            <div className="relative cursor-pointer" onClick={toggleCart}>
+              <img src={cart} alt="Cart" className="w-6 h-6" />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
+            </div>
             <img src={search} alt="Search" className="w-6 h-6" />
           </div>
 

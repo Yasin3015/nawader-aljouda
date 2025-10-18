@@ -3,7 +3,12 @@
   "browse": "Browse",
   "about_us": "About Us",
   "contact_us": "Contact Us",
-  "cart": "Shoping Cart",
+  "cart": "Shopping Cart",
+  "cartEmpty": "Your cart is empty",
+  "checkout": "Checkout",
+  "goToCart": "Go To Cart",
+  "products": "Products",
+  "product": "Product",
   "search": {
     "placeholder": "Search...",
     "button": "Search",
@@ -87,6 +92,139 @@
         "position": "Product Manager",
         "company": "StayPlus"
       }
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "100% Trusted",
+      "subtitle": "Organic Food Store",
+      "description": "Moti porttitor ligula inversati ut tempera curvequico ante, at commodo congue dolor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Nulla quis lorem ut libero malesuada feugiat.",
+      "badges": {
+        "secure": "100% Secure",
+        "organic": "Organic Products",
+        "rating": "5 Star Rating"
+      }
+    },
+    "trustedStore": {
+      "title": "100% Trusted",
+      "subtitle": "Organic Product Store",
+      "description": "Moti porttitor ligula inversati ut tempera curvequico ante, at commodo congue dolor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Donec velit neque, auctor sit amet aliquam vel.",
+      "features": {
+        "shipping": {
+          "title": "Free Shipping",
+          "description": "Free shipping on all orders over $50"
+        },
+        "feedback": {
+          "title": "Customer Feedback",
+          "description": "We value your opinion and feedback"
+        },
+        "organic": {
+          "title": "100% Organic Product",
+          "description": "All our products are certified organic"
+        },
+        "support": {
+          "title": "Great Support 24/7",
+          "description": "Round the clock customer support"
+        },
+        "payment": {
+          "title": "100% Secure Payment",
+          "description": "Your payment information is always secure"
+        },
+        "food": {
+          "title": "100% Organic Food",
+          "description": "Fresh and organic food delivered to you"
+        }
+      },
+      "promise": {
+        "title": "Our Promise",
+        "items": [
+          "Fresh organic products delivered daily",
+          "Certified organic and pesticide-free",
+          "Money-back guarantee on all products"
+        ]
+      }
+    },
+    "team": {
+      "title": "Our Awesome Team",
+      "description": "Meet the dedicated professionals who make our organic food store the best choice for your health and wellness needs.",
+      "features": {
+        "expert": {
+          "title": "Expert Team",
+          "description": "Our team consists of industry experts with years of experience"
+        },
+        "innovation": {
+          "title": "Innovation",
+          "description": "We constantly innovate to bring you the best organic products"
+        },
+        "quality": {
+          "title": "Quality Focus",
+          "description": "Quality is our top priority in everything we do"
+        }
+      },
+      "carousel": {
+        "title": "Meet Our Team"
+      },
+      "members": {
+        "jenny": {
+          "name": "Jenny Wilson",
+          "position": "CEO & Founder"
+        },
+        "cody": {
+          "name": "Cody Risher",
+          "position": "Security Guard"
+        },
+        "jane": {
+          "name": "Jane Cooper",
+          "position": "Worker"
+        },
+        "robert": {
+          "name": "Robert Fox",
+          "position": "Marketing Manager"
+        },
+        "dianne": {
+          "name": "Dianne Russell",
+          "position": "Product Manager"
+        }
+      }
+    },
+    "testimonials": {
+      "title": "Client Testimonial!",
+      "description": "Hear what our satisfied customers have to say about their experience with our organic food store.",
+      "carousel": {
+        "title": "What Our Customers Say"
+      },
+      "cta": {
+        "title": "Ready to Experience Quality Organic Food?",
+        "description": "Join thousands of satisfied customers who trust us for their organic food needs.",
+        "button": "Shop Now"
+      },
+      "items": [
+        {
+          "quote": "The quality of organic products here is exceptional. I've been shopping here for over a year and never been disappointed. The freshness and taste are unmatched.",
+          "name": "Robert Fox",
+          "status": "Customer"
+        },
+        {
+          "quote": "Amazing service and incredible organic food selection. The team is knowledgeable and always helpful. Highly recommend this store to anyone looking for quality organic products.",
+          "name": "Dianne Russell",
+          "status": "Customer"
+        },
+        {
+          "quote": "Outstanding customer service and the freshest organic produce I've ever found. The delivery is always on time and the products are exactly as described.",
+          "name": "Esther Howard",
+          "status": "Customer"
+        },
+        {
+          "quote": "This organic food store has become my go-to place for all my healthy food needs. The variety and quality are impressive, and the staff is incredibly friendly.",
+          "name": "Cameron Williamson",
+          "status": "Customer"
+        },
+        {
+          "quote": "I love how they source their products locally and organically. The taste difference is noticeable, and I feel good knowing I'm supporting sustainable farming practices.",
+          "name": "Leslie Alexander",
+          "status": "Customer"
+        }
+      ]
     }
   }
 }

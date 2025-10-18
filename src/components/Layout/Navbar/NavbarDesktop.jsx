@@ -9,12 +9,13 @@ import cartIcon from "../../../assets/icons/bag.svg";
 import LanguageSwitcher from "./LanguageSwitcher";
 import SearchComponent from "../../UI/SearchComponent";
 import NavLinks from "./NavLinks";
+import { useCart } from "../../../contexts/CartContext";
 
 const NavbarDesktop = () => {
   const { i18n, t } = useTranslation();
   const currentLang = i18n.language;
   const isRTL = currentLang === "ar";
-  const cartCount = 3;
+  const { totalItems, totalPrice, toggleCart } = useCart();
   return (
     <nav
       dir={isRTL ? "rtl" : "ltr"}
@@ -32,12 +33,15 @@ const NavbarDesktop = () => {
           <SearchComponent />
         </div>
         <div className="flex items-end gap-4 ml-auto">
-            <div className="cart-btn flex items-center box-border w-34 cursor-pointer p-0 gap-2 justify-end">
+            <div 
+              className="cart-btn flex items-center box-border w-34 cursor-pointer p-0 gap-2 justify-end"
+              onClick={toggleCart}
+            >
                 <div className="relative flex flex-col p-0 m-0 box-border items-center">
                     <img src={cartIcon} alt="Cart" className="block w-10" />
-                        {cartCount > 0 && (
+                        {totalItems > 0 && (
                     <span className="absolute -top-1 -right-1 bg-[var(--color-primary)] text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                        {cartCount}
+                        {totalItems}
                     </span>
                     )}
                 </div>
@@ -45,7 +49,7 @@ const NavbarDesktop = () => {
                     <span className="text-xs text-[var(--color-gray-9)] p-0 m-0">
                         {t("cart")}
                     </span>
-                    <p className="text-black text-xs font-bold p-0 m-0">50.00$</p>
+                    <p className="text-black text-xs font-bold p-0 m-0">${totalPrice.toFixed(2)}</p>
                 </div>
             </div>
           <Button variant="primary" className="cursor-pointer" size="md">
