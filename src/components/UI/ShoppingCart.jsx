@@ -1,10 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useCart } from '../../contexts/CartContext';
+import { useNavigate } from 'react-router-dom';
 import Button from '../UI/Button';
 
 const ShoppingCart = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const { 
     items, 
     totalItems, 
@@ -119,8 +121,8 @@ const ShoppingCart = () => {
                 variant="primary" 
                 className="w-full"
                 onClick={() => {
-                  // Handle checkout logic here
-                  console.log('Proceeding to checkout...');
+                  navigate('/checkout');
+                  closeCart();
                 }}
               >
                 {t("checkout")}
@@ -129,8 +131,8 @@ const ShoppingCart = () => {
                 variant="outline" 
                 className="w-full"
                 onClick={() => {
-                  // Handle go to cart page logic here
-                  console.log('Going to cart page...');
+                  navigate('/cart');
+                  closeCart();
                 }}
               >
                 {t("goToCart")}

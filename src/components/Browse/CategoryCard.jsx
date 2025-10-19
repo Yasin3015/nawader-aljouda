@@ -4,7 +4,7 @@ const CategoryCard = ({ title, image, count, active, onClick }) => {
   return (
     <div
       className={`
-        flex-shrink-0 w-32 h-32 cursor-pointer transition-all duration-200 rounded-lg border-2
+        flex-shrink-0 w-32 h-32 cursor-pointer transition-all duration-200 rounded-sm border-2
         ${active 
           ? 'border-green-500 bg-green-50' 
           : 'border-gray-200 bg-white hover:border-gray-300'
@@ -34,6 +34,7 @@ const CategoryCard = ({ title, image, count, active, onClick }) => {
         {/* Category Title */}
         <h3 className={`
           text-sm font-medium mb-1
+          text-center
           ${active ? 'text-gray-900' : 'text-gray-700'}
         `}>
           {title}
@@ -41,6 +42,7 @@ const CategoryCard = ({ title, image, count, active, onClick }) => {
 
         {/* Product Count */}
         <p className={`
+          text-center
           text-xs
           ${active ? 'text-green-600 font-medium' : 'text-gray-500'}
         `}>

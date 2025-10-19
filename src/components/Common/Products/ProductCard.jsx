@@ -1,8 +1,28 @@
 import React from "react";
 import { Heart, Eye, ShoppingBag } from "lucide-react";
+import { useCart } from "../../../contexts/CartContext";
+import { useToast } from "../../UI/ToastProvider";
 
 const ProductCard = ({ product }) => {
-  const { image, name, price, rating = 0, flag } = product;
+  const { image, name, price, rating = 0, flag, id } = product;
+  const { addToCart } = useCart();
+  const { addToast } = useToast();
+
+  const handleAddToCart = () => {
+    if (flag === "out of stock") return;
+    
+    const cartProduct = {
+      id: id || Date.now(),
+      name,
+      price,
+      image,
+      unit: 'piece', // Default unit
+      rating
+    };
+    
+    addToCart(cartProduct);
+    addToast(`${name} added to cart!`, 'success');
+  };
 
   // ⭐ دالة النجوم
   const renderStars = (rating) => {
@@ -81,10 +101,11 @@ const ProductCard = ({ product }) => {
         </div>
 
         <button
+          onClick={handleAddToCart}
           className={`border cursor-pointer border-gray-200 p-2 transition rounded-full ${
             flag === "out of stock"
               ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-              : "bg-[var(--color-white)] hover:bg-[var(--color-primary)] hover:text-white"
+              : "bg-[var(--color-primary)] text-white hover:bg-[var(--color-hard-primary)]"
           }`}
           disabled={flag === "out of stock"}
         >

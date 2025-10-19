@@ -12,40 +12,78 @@ const Browse = () => {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-
-  // Sample categories data
   const categories = [
     { id: 'all', title: 'All', image: null, count: 52 },
-    { id: 'plastic', title: 'Plastic', image: null, count: 123 },
-    { id: 'metal', title: 'Metal', image: null, count: 89 },
-    { id: 'electronics', title: 'Electronics', image: null, count: 67 },
-    { id: 'textiles', title: 'Textiles', image: null, count: 45 },
-    { id: 'paper', title: 'Paper', image: null, count: 34 },
-    { id: 'glass', title: 'Glass', image: null, count: 23 },
-    { id: 'wood', title: 'Wood', image: null, count: 56 }
+    { id: 'vegetables', title: 'Vegetables', image: null, count: 25 },
+    { id: 'fruits', title: 'Fruits', image: null, count: 18 },
+    { id: 'dairy', title: 'Dairy', image: null, count: 12 },
+    { id: 'meat', title: 'Meat', image: null, count: 8 },
+    { id: 'grains', title: 'Grains', image: null, count: 15 },
+    { id: 'beverages', title: 'Beverages', image: null, count: 10 },
+    { id: 'snacks', title: 'Snacks', image: null, count: 20 },
+    { id: 'condiments', title: 'Condiments', image: null, count: 12 },
+    { id: 'frozen', title: 'Frozen', image: null, count: 8 }
   ];
-
-  // Sample products data - updated to match existing ProductCard component props
   const allProducts = [
     {
       id: 1,
-      name: 'Industrial Plastic Waste',
-      price: 14.99,
+      name: 'Green Capsicum',
+      price: 14.00,
       rating: 4.5,
       image: null,
       flag: null,
-      category: 'plastic',
-      tags: ['high-quality', 'discounts']
+      category: 'vegetables',
+      tags: ['fresh', 'organic']
     },
     {
       id: 2,
-      name: 'Metal Scrap Collection',
-      price: 25.50,
+      name: 'Red Capsicum',
+      price: 14.00,
       rating: 4.8,
       image: null,
+      flag: 'sale',
+      category: 'vegetables',
+      tags: ['fresh', 'organic']
+    },
+    {
+      id: 3,
+      name: 'Fresh Tomatoes',
+      price: 8.50,
+      rating: 4.2,
+      image: null,
       flag: 'best sale',
-      category: 'metal',
-      tags: ['newest', 'high-quality']
+      category: 'vegetables',
+      tags: ['fresh', 'local']
+    },
+    {
+      id: 4,
+      name: 'Organic Lettuce',
+      price: 6.99,
+      rating: 4.6,
+      image: null,
+      flag: null,
+      category: 'vegetables',
+      tags: ['organic', 'fresh']
+    },
+    {
+      id: 5,
+      name: 'Sweet Potatoes',
+      price: 12.00,
+      rating: 4.4,
+      image: null,
+      flag: 'out of stock',
+      category: 'vegetables',
+      tags: ['organic', 'nutritious']
+    },
+    {
+      id: 6,
+      name: 'Fresh Carrots',
+      price: 9.99,
+      rating: 4.7,
+      image: null,
+      flag: null,
+      category: 'vegetables',
+      tags: ['fresh', 'vitamin-rich']
     },
     {
       id: 3,
@@ -149,24 +187,19 @@ const Browse = () => {
     }
   ];
 
-  // Filter products based on selected category and filters
   const filteredProducts = allProducts.filter(product => {
-    // Category filter
     if (selectedCategory !== 'All' && product.category !== selectedCategory.toLowerCase()) {
       return false;
     }
 
-    // Price filter
     if (product.price < filters.priceRange.min || product.price > filters.priceRange.max) {
       return false;
     }
 
-    // Rating filter
     if (filters.ratings.length > 0 && !filters.ratings.some(rating => product.rating >= rating)) {
       return false;
     }
 
-    // Tag filter
     if (filters.tags.length > 0 && !filters.tags.some(tag => product.tags.includes(tag))) {
       return false;
     }
@@ -174,13 +207,11 @@ const Browse = () => {
     return true;
   });
 
-  // Pagination
   const productsPerPage = 9;
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
   const startIndex = (currentPage - 1) * productsPerPage;
   const paginatedProducts = filteredProducts.slice(startIndex, startIndex + productsPerPage);
 
-  // Reset to first page when filters change
   useEffect(() => {
     setCurrentPage(1);
   }, [selectedCategory, filters]);
@@ -206,16 +237,13 @@ const Browse = () => {
         {/* Page Title */}
         <h1 className="text-2xl font-bold text-gray-900 mb-6">Select Categories</h1>
         
-        {/* Category Slider */}
         <CategorySlider
           categories={categories}
           selectedCategory={selectedCategory}
           onCategoryChange={handleCategoryChange}
         />
 
-        {/* Main Content */}
         <div className="flex flex-col lg:flex-row gap-6 mt-8">
-          {/* Filter Sidebar */}
           <FilterSidebar
             filters={filters}
             onFilterChange={handleFilterChange}

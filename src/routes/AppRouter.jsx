@@ -1,7 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 
-// 🧱 Layouts
 const UserLayout = lazy(() => import("../Layouts/UserLayout"));
 const AuthLayout = lazy(() => import("../Layouts/AuthLayout"));
 
@@ -10,6 +9,9 @@ const Home = lazy(() => import("../pages/user/Home"));
 const About = lazy(() => import("../pages/user/About"));
 const Contact = lazy(() => import("../pages/user/Contact"));
 const Browse = lazy(() => import("../pages/user/Browse"));
+const CartPage = lazy(() => import("../pages/CartPage"));
+const CheckoutPage = lazy(() => import("../pages/CheckoutPage"));
+const Profile = lazy(() => import("../pages/Profile"));
 const FAQ = lazy(() => import("../pages/FAQ"));
 
 // 🔐 Auth Pages
@@ -78,6 +80,30 @@ const AppRouter = createBrowserRouter(
           element={
             <Suspense fallback={<Loading />}>
               <Browse />
+            </Suspense>
+          }
+        />
+        <Route
+          path="cart"
+          element={
+            <Suspense fallback={<Loading />}>
+              <CartPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="checkout"
+          element={
+            <Suspense fallback={<Loading />}>
+              <CheckoutPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="profile"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Profile />
             </Suspense>
           }
         />

@@ -64,25 +64,7 @@ const cartReducer = (state, action) => {
 
 // Initial cart state
 const initialState = {
-  items: [
-    // Sample data for testing
-    {
-      id: 1,
-      name: 'Product Name',
-      price: 12.00,
-      quantity: 1,
-      unit: 'kg',
-      image: null, // placeholder for product image
-    },
-    {
-      id: 2,
-      name: 'Product Name',
-      price: 14.00,
-      quantity: 1,
-      unit: 'piece',
-      image: null, // placeholder for product image
-    },
-  ],
+  items: [],
   isOpen: false,
 };
 
