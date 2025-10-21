@@ -6,7 +6,7 @@ const OrderSummary = ({ items, totalPrice }) => {
   const total = subtotal + shipping;
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-6">
+    <div className="py-3">
       <h2 className="text-xl font-semibold text-gray-900 mb-6">Order Summary</h2>
       
       {/* Order Items */}
@@ -30,7 +30,7 @@ const OrderSummary = ({ items, totalPrice }) => {
 
             {/* Product Info */}
             <div className="flex-1 min-w-0">
-              <h3 className="text-sm font-medium text-gray-900 truncate">
+              <h3 className="text-sm font-medium text-[var(--color-gray-7)] truncate">
                 {item.name}
               </h3>
               <p className="text-sm text-gray-500">
@@ -55,7 +55,7 @@ const OrderSummary = ({ items, totalPrice }) => {
         
         <div className="flex justify-between items-center">
           <span className="text-gray-600">Shipping:</span>
-          <span className="font-semibold text-green-600">Free</span>
+          <span className="font-semibold text-green-600">Determine later</span>
         </div>
         
         <div className="border-t border-gray-200 pt-3">
@@ -64,6 +64,7 @@ const OrderSummary = ({ items, totalPrice }) => {
             <span className="text-lg font-bold text-gray-900">${total.toFixed(2)}</span>
           </div>
         </div>
+        <div className="bg-[var(--color-green-gray-1)] p-3 border rounded-sm border-[var(--color-danger)]">jkhjh</div>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import ProfileInfo from '../components/profile/ProfileInfo';
 import BillingAddress from '../components/profile/BillingAddress';
 import RecentOrders from '../components/profile/RecentOrders';
 import OrderHistory from '../components/profile/OrderHistory';
+import WishlistTable from '../components/WishList/WishlistTable';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -16,12 +17,7 @@ const Profile = () => {
   };
 
   // Sample address data
-  const addressData = {
-    name: 'Dainne Russell',
-    address: '4140 Parker Rd. Allentown, New Mexico 31134',
-    email: 'dainne.ressell@gmail.com',
-    phone: '(671) 555-0110'
-  };
+  
 
   // Sample orders data
   const ordersData = [
@@ -80,10 +76,7 @@ const Profile = () => {
     // Handle edit profile logic
   };
 
-  const handleEditAddress = () => {
-    console.log('Edit address clicked');
-    // Handle edit address logic
-  };
+  
 
   const handleViewAllOrders = () => {
     console.log('View all orders clicked');
@@ -116,10 +109,7 @@ const Profile = () => {
         return <OrderHistory />;
       case 'wishlist':
         return (
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Wishlist</h2>
-            <p className="text-gray-500">Your wishlist is empty.</p>
-          </div>
+          <WishlistTable />
         );
       case 'shopping-cart':
         return (
@@ -160,7 +150,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen py-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Left Column - Sidebar */}
@@ -172,19 +162,14 @@ const Profile = () => {
           </div>
 
           {/* Middle Column - Dynamic Content */}
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-9">
             {renderContent()}
           </div>
 
           {/* Right Column - Billing Address (only show on dashboard) */}
-          {activeTab === 'dashboard' && (
-            <div className="lg:col-span-3">
-              <BillingAddress 
-                address={addressData}
-                onEditAddress={handleEditAddress}
-              />
-            </div>
-          )}
+          {/* {activeTab === 'dashboard' && (
+            
+          )} */}
         </div>
       </div>
     </div>

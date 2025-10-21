@@ -1,4 +1,5 @@
 import React from 'react';
+import BillingAddress from './BillingAddress';
 
 const ProfileInfo = ({ user, onEditProfile }) => {
   const defaultUser = {
@@ -8,9 +9,20 @@ const ProfileInfo = ({ user, onEditProfile }) => {
   };
 
   const userData = user || defaultUser;
+  const handleEditAddress = () => {
+    console.log('Edit address clicked');
+    // Handle edit address logic
+  };
+  const addressData = {
+    name: 'Dainne Russell',
+    address: '4140 Parker Rd. Allentown, New Mexico 31134',
+    email: 'dainne.ressell@gmail.com',
+    phone: '(671) 555-0110'
+  };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div className='flex justify-between items-center gap-6'>
+    <div className=" border border-gray-200 p-6 flex-1 rounded-sm">
       <div className="flex flex-col items-center text-center">
         {/* Profile Image */}
         <div className="w-24 h-24 rounded-full overflow-hidden mb-4">
@@ -39,6 +51,13 @@ const ProfileInfo = ({ user, onEditProfile }) => {
           Edit Profile
         </button>
       </div>
+    </div>
+    <div className="lg:col-span-3">
+              <BillingAddress 
+                address={addressData}
+                onEditAddress={handleEditAddress}
+              />
+            </div>
     </div>
   );
 };

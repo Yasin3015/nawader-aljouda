@@ -24,15 +24,15 @@ const PaymentMethod = ({ paymentMethod, setPaymentMethod, onPlaceOrder, isSubmit
   ];
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-6">
-      <h2 className="text-xl font-semibold text-gray-900 mb-6">Payment Method</h2>
+    <div className="py-0">
+      <h2 className="text-xl font-semibold text-gray-900 mb-2">Payment Method</h2>
       
       {/* Payment Options */}
-      <div className="space-y-4 mb-6">
+      <div className="space-y-2 mb-6">
         {paymentOptions.map((option) => (
           <label
             key={option.id}
-            className={`flex items-center p-4 border rounded-lg cursor-pointer transition-colors ${
+            className={`flex items-center p-1 border rounded-sm cursor-pointer transition-colors ${
               paymentMethod === option.id
                 ? 'border-[var(--color-primary)] bg-green-50'
                 : 'border-gray-200 hover:border-gray-300'
@@ -61,10 +61,8 @@ const PaymentMethod = ({ paymentMethod, setPaymentMethod, onPlaceOrder, isSubmit
             {/* Payment Option Info */}
             <div className="flex-1">
               <div className="flex items-center gap-2">
-                <span className="text-lg">{option.icon}</span>
                 <span className="font-medium text-gray-900">{option.name}</span>
               </div>
-              <p className="text-sm text-gray-500 mt-1">{option.description}</p>
             </div>
           </label>
         ))}
@@ -80,7 +78,7 @@ const PaymentMethod = ({ paymentMethod, setPaymentMethod, onPlaceOrder, isSubmit
       {/* Place Order Button */}
       <Button 
         variant="primary" 
-        className="w-full text-lg py-4"
+        className="w-full text-lg py-3 rounded-full"
         onClick={onPlaceOrder}
         disabled={isSubmitting}
       >

@@ -39,7 +39,7 @@ const BillingInformation = ({ billingData, setBillingData, errors = {} }) => {
   const getFieldError = (field) => errors[`billingData.${field}`];
   const getFieldClassName = (field) => 
     `w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent ${
-      getFieldError(field) ? 'border-red-500' : 'border-gray-300'
+      getFieldError(field) ? 'border-red-500' : 'border-[var(--color-gray-2)]'
     }`;
 
   const ErrorMessage = ({ field }) => {
@@ -48,13 +48,13 @@ const BillingInformation = ({ billingData, setBillingData, errors = {} }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-6">
-      <h2 className="text-xl font-semibold text-gray-900 mb-6">Billing Information</h2>
+    <div className="py-3">
+      <h2 className="text-xl font-semibold text-[var(--color-gray-7)] mb-6">Billing Information</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* First Name */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             First name
           </label>
           <input
@@ -66,10 +66,8 @@ const BillingInformation = ({ billingData, setBillingData, errors = {} }) => {
           />
           <ErrorMessage field="firstName" />
         </div>
-
-        {/* Last Name */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             Last name
           </label>
           <input
@@ -84,7 +82,7 @@ const BillingInformation = ({ billingData, setBillingData, errors = {} }) => {
 
         {/* Company Name */}
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             Company Name (optional)
           </label>
           <input
@@ -99,7 +97,7 @@ const BillingInformation = ({ billingData, setBillingData, errors = {} }) => {
 
         {/* Street Address */}
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             Street Address
           </label>
           <input
@@ -114,7 +112,7 @@ const BillingInformation = ({ billingData, setBillingData, errors = {} }) => {
 
         {/* Country */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             Country / Region
           </label>
           <select
@@ -133,7 +131,7 @@ const BillingInformation = ({ billingData, setBillingData, errors = {} }) => {
 
         {/* State */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             States
           </label>
           <select
@@ -152,7 +150,7 @@ const BillingInformation = ({ billingData, setBillingData, errors = {} }) => {
 
         {/* Zip Code */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             Zip Code (optional)
           </label>
           <input
@@ -167,7 +165,7 @@ const BillingInformation = ({ billingData, setBillingData, errors = {} }) => {
 
         {/* Email */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             Email
           </label>
           <input
@@ -182,7 +180,7 @@ const BillingInformation = ({ billingData, setBillingData, errors = {} }) => {
 
         {/* Phone */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             Phone
           </label>
           <input
@@ -205,7 +203,7 @@ const BillingInformation = ({ billingData, setBillingData, errors = {} }) => {
             onChange={(e) => handleInputChange('shipToDifferent', e.target.checked)}
             className="w-4 h-4 text-[var(--color-primary)] bg-gray-100 border-gray-300 rounded focus:ring-[var(--color-primary)] focus:ring-2"
           />
-          <span className="ml-2 text-sm text-gray-700">
+          <span className="ml-2 text-sm text-black">
             Ship to a different address
           </span>
         </label>

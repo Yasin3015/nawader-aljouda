@@ -11,7 +11,7 @@ const BillingAddress = ({ address, onEditAddress }) => {
   const addressData = address || defaultAddress;
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div className="rounded-sm border border-gray-200 p-6">
       <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-4">
         Billing Address
       </h3>

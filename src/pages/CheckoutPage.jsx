@@ -44,16 +44,12 @@ const CheckoutPage = () => {
 
       const validatedData = checkoutSchema.parse(formData);
       
-      // If validation passes, proceed with order placement
       console.log('Validated order data:', validatedData);
       
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       addToast('Order placed successfully!', 'success');
       
-      // You can add order processing logic here
-      // For example: navigate to order confirmation page
       
     } catch (error) {
       if (error.errors) {
@@ -101,10 +97,10 @@ const CheckoutPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-white py-8">
       <div className="container mx-auto px-4">
         {/* Page Header */}
-        <div className="mb-8">
+        <div>
           <Link 
             to="/cart"
             className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-4"
@@ -112,9 +108,6 @@ const CheckoutPage = () => {
             <ArrowLeft className="w-5 h-5" />
             Back to Cart
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900">
-            Checkout
-          </h1>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -127,7 +120,7 @@ const CheckoutPage = () => {
             />
             
             {/* Additional Info */}
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="py-2">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Additional Info</h2>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -138,7 +131,7 @@ const CheckoutPage = () => {
                   onChange={(e) => setOrderNotes(e.target.value)}
                   placeholder="Notes about your order, e.g. special notes for delivery"
                   className={`w-full h-32 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent resize-none ${
-                    errors['orderNotes'] ? 'border-red-500' : 'border-gray-300'
+                    errors['orderNotes'] ? 'border-red-500' : 'border-[var(--color-gray-2)]'
                   }`}
                 />
                 {errors['orderNotes'] && (

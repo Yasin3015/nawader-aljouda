@@ -14,19 +14,19 @@ const CartSummary = () => {
   const total = subtotal + shipping;
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-6 sticky top-4">
+    <div className="p-6 border border-gray-200 rounded-sm sticky top-4">
       <h2 className="text-xl font-bold text-gray-900 mb-6">Cart Total</h2>
       
       {/* Summary Items */}
-      <div className="space-y-4 mb-6">
-        <div className="flex justify-between items-center">
+      <div className="space-y-4 mb-6 ">
+        <div className="flex justify-between border-b border-b-gray-200 pb-4 items-center">
           <span className="text-gray-600">Subtotal:</span>
           <span className="font-semibold text-gray-900">${subtotal.toFixed(2)}</span>
         </div>
         
         <div className="flex justify-between items-center">
           <span className="text-gray-600">Shipping:</span>
-          <span className="font-semibold text-green-600">Free</span>
+          <span className="font-semibold text-green-600">Determine later</span>
         </div>
         
         <div className="border-t border-gray-200 pt-4">
