@@ -1,35 +1,60 @@
 import React from "react";
-import { Heart, Eye, ShoppingBag } from "lucide-react";
+import { Heart, Eye, ShoppingBag, Check } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../../../contexts/CartContext";
+import { useWishlist } from "../../../contexts/WishlistContext";
 import { useToast } from "../../UI/ToastProvider";
 
 const ProductCard = ({ product }) => {
   const { image, name, price, rating = 0, flag, id } = product;
-  const { addToCart } = useCart();
+  const { addToCart, removeFromCart, items } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   const { addToast } = useToast();
+  const navigate = useNavigate();
 
-  const handleAddToCart = () => {
+  // ✅ تحقق إذا المنتج موجود بالفعل في الكارت
+  const isInCart = items.some((cartItem) => cartItem.id === id);
+  
+  // ✅ تحقق إذا المنتج موجود في قائمة المفضلة
+  const isInWishlistItem = isInWishlist(id);
+
+  const handleAddOrRemove = () => {
     if (flag === "out of stock") return;
-    
-    const cartProduct = {
-      id: id || Date.now(),
-      name,
-      price,
-      image,
-      unit: 'piece', // Default unit
-      rating
-    };
-    
-    addToCart(cartProduct);
-    addToast(`${name} added to cart!`, 'success');
+
+    if (isInCart) {
+      removeFromCart(id);
+      addToast(`${name} removed from cart!`, "warning");
+    } else {
+      const cartProduct = {
+        id: id || Date.now(),
+        name,
+        price,
+        image,
+        unit: "piece",
+        rating,
+      };
+      addToCart(cartProduct);
+      addToast(`${name} added to cart!`, "success");
+    }
   };
 
-  // ⭐ دالة النجوم
+  const handleViewDetails = () => {
+    navigate(`/product/${id || '1'}`);
+  };
+
+  const handleWishlistToggle = () => {
+    if (isInWishlistItem) {
+      removeFromWishlist(id);
+    } else {
+      addToWishlist(product);
+    }
+  };
+
+  // ⭐ النجوم
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 >= 0.5;
     const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-
     return (
       <>
         {"★".repeat(fullStars)}
@@ -57,7 +82,6 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className="relative group bg-[var(--color-white)] rounded-[var(--radius-md)] overflow-hidden border border-transparent hover:border-[var(--color-primary)] transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_6px_25px_rgba(0,0,0,0.08)]">
-      
       {/* Image */}
       <div className="w-full h-48 bg-gray-300 flex items-center justify-center relative">
         {image ? (
@@ -81,10 +105,20 @@ const ProductCard = ({ product }) => {
 
         {/* Hover Buttons */}
         <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <button className="cursor-pointer bg-[var(--color-white)] p-2 rounded-full shadow-md hover:text-[var(--color-primary)] transition">
-            <Heart className="w-4 h-4" />
+          <button 
+            onClick={handleWishlistToggle}
+            className={`cursor-pointer bg-[var(--color-white)] p-2 rounded-full shadow-md transition ${
+              isInWishlistItem 
+                ? 'text-red-500 hover:text-red-600' 
+                : 'hover:text-[var(--color-primary)]'
+            }`}
+          >
+            <Heart className={`w-4 h-4 ${isInWishlistItem ? 'fill-current' : ''}`} />
           </button>
-          <button className="cursor-pointer bg-[var(--color-white)] p-2 rounded-full shadow-md hover:text-[var(--color-primary)] transition">
+          <button 
+            onClick={handleViewDetails}
+            className="cursor-pointer bg-[var(--color-white)] p-2 rounded-full shadow-md hover:text-[var(--color-primary)] transition"
+          >
             <Eye className="w-4 h-4" />
           </button>
         </div>
@@ -101,15 +135,17 @@ const ProductCard = ({ product }) => {
         </div>
 
         <button
-          onClick={handleAddToCart}
+          onClick={handleAddOrRemove}
           className={`border cursor-pointer border-gray-200 p-2 transition rounded-full ${
             flag === "out of stock"
               ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-              : "bg-[var(--color-primary)] text-white hover:bg-[var(--color-hard-primary)]"
+              : isInCart
+              ? "bg-[var(--color-primary)] text-[var(--color-hard-primary)] hover:bg-[var(--color-primary)]"
+              : "bg-gray-500 text-white hover:bg-[var(--color-primary)] hover:text-[var(--color-hard-primary)]"
           }`}
           disabled={flag === "out of stock"}
         >
-          <ShoppingBag className="w-4 h-4" />
+          {<ShoppingBag className="w-4 h-4" />}
         </button>
       </div>
     </div>

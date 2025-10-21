@@ -226,5 +226,128 @@
         }
       ]
     }
+  },
+  "orderDetails": {
+    "title": "Order Details",
+    "subtitle": "{{count}} orders - {{date}}",
+    "backToOrders": "Back to orders",
+    "billingAddress": {
+      "title": "Billing Address",
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "orderSummary": {
+      "orderId": "Order ID",
+      "paymentMethod": "Payment Method",
+      "totalOrder": "Total Order:",
+      "discount": "Discount",
+      "shipping": "Shipping",
+      "grandTotal": "Grand Total"
+    },
+    "progress": {
+      "orderReview": "Order Review",
+      "inProgress": "In Progress",
+      "onTheWay": "On the Way",
+      "delivered": "Delivered"
+    },
+    "productList": {
+      "product": "Product",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total"
+    }
+  },
+  "settings": {
+    "sidebar": {
+      "mainMenu": "Main Menu",
+      "dashboard": "Dashboard",
+      "orderHistory": "Order History",
+      "wishlist": "Wishlist",
+      "shoppingCart": "Shopping Cart",
+      "settings": "Settings",
+      "logout": "Logout"
+    },
+    "account": {
+      "title": "Account Settings",
+      "uploadImage": "Upload Image",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone Number"
+    },
+    "billing": {
+      "title": "Billing Address",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "companyName": "Company Name (optional)",
+      "address": "Address or Location",
+      "city": "City",
+      "zipCode": "Zip Code (optional)",
+      "email": "Email",
+      "phone": "Phone Number"
+    },
+    "password": {
+      "title": "Change Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password",
+      "placeholder": "Password",
+      "saveChanges": "Save Changes"
+    },
+    "common": {
+      "save": "Save",
+      "saving": "Saving..."
+    }
+  },
+  "productInfo": {
+    "reviews": "reviews",
+    "discount": "discount",
+    "moreDetails": "More Details",
+    "quantity": "Quantity",
+    "addToCart": "Add to Cart",
+    "category": "Category",
+    "tags": "Keywords",
+    "tabs": {
+      "additionalInfo": "Additional Info",
+      "reviews": "Customer Reviews"
+    },
+    "additionalInfo": {
+      "weight": "Weight",
+      "type": "Type",
+      "classification": "Classification",
+      "stockStatus": "Stock Status",
+      "tags": "Tags"
+    },
+    "reviews": {
+      "keywords": "Keywords",
+      "viewMore": "View More",
+      "showLess": "Show Less"
+    },
+    "video": {
+      "playing": "Video Playing"
+    },
+    "badges": {
+      "safeProduct": "Safe Product",
+      "safeDescription": "There's nothing to worry about",
+      "organic": "100% Organic",
+      "organicDescription": "100% Organic"
+    },
+    "relatedProducts": "Related Products"
+  },
+  "wishlist": {
+    "title": "Wishlist",
+    "empty": "Your wishlist is empty",
+    "addToWishlist": "Add to Wishlist",
+    "removeFromWishlist": "Remove from Wishlist",
+    "addedToWishlist": "added to wishlist!",
+    "removedFromWishlist": "removed from wishlist!",
+    "clearWishlist": "Clear Wishlist",
+    "wishlistCleared": "Wishlist cleared!",
+    "totalItems": "Total Items",
+    "actions": {
+      "addToCart": "Add to Cart",
+      "remove": "Remove",
+      "viewDetails": "View Details"
+    }
   }
 }

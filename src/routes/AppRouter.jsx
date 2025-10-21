@@ -12,6 +12,7 @@ const Browse = lazy(() => import("../pages/user/Browse"));
 const CartPage = lazy(() => import("../pages/CartPage"));
 const CheckoutPage = lazy(() => import("../pages/CheckoutPage"));
 const Profile = lazy(() => import("../pages/Profile"));
+const ProductInfo = lazy(() => import("../pages/ProductInfo"));
 const WishList = lazy(()=> import ('../pages/user/WishList'))
 const FAQ = lazy(() => import("../pages/FAQ"));
 
@@ -113,6 +114,14 @@ const AppRouter = createBrowserRouter(
           element={
             <Suspense fallback={<Loading />}>
               <Profile />
+            </Suspense>
+          }
+        />
+        <Route
+          path="product/:productId"
+          element={
+            <Suspense fallback={<Loading />}>
+              <ProductInfo />
             </Suspense>
           }
         />

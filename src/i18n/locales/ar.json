@@ -168,5 +168,128 @@
         }
       ]
     }
+  },
+  "orderDetails": {
+    "title": "تفاصيل الطلب",
+    "subtitle": "{{count}} طلبات - {{date}}",
+    "backToOrders": "الرجوع للسجل",
+    "billingAddress": {
+      "title": "عنوان الفواتير",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف"
+    },
+    "orderSummary": {
+      "orderId": "رقم الطلب",
+      "paymentMethod": "طريقة الدفع",
+      "totalOrder": "إجمالي الطلب:",
+      "discount": "الخصم",
+      "shipping": "الشحن",
+      "grandTotal": "المجموع"
+    },
+    "progress": {
+      "orderReview": "مراجعة الطلب",
+      "inProgress": "قيد التنفيذ",
+      "onTheWay": "في الطريق",
+      "delivered": "تم التوصيل"
+    },
+    "productList": {
+      "product": "المنتج",
+      "price": "السعر",
+      "quantity": "الكمية",
+      "total": "المجموع"
+    }
+  },
+  "settings": {
+    "sidebar": {
+      "mainMenu": "القائمة الرئيسية",
+      "dashboard": "لوحة التحكم",
+      "orderHistory": "سجل الطلبات",
+      "wishlist": "قائمة المفضلة",
+      "shoppingCart": "سلة التسوق",
+      "settings": "الإعدادات",
+      "logout": "تسجيل الخروج"
+    },
+    "account": {
+      "title": "إعدادات الحساب",
+      "uploadImage": "تحميل صورة",
+      "firstName": "الاسم الأول",
+      "lastName": "الاسم الآخر",
+      "email": "الحساب",
+      "phone": "رقم الهاتف"
+    },
+    "billing": {
+      "title": "عنوان الفواتير",
+      "firstName": "الاسم الأول",
+      "lastName": "Last name",
+      "companyName": "Company Name (optional)",
+      "address": "العنوان أو الموقع",
+      "city": "المدينة",
+      "zipCode": "Zip Code (optional)",
+      "email": "حساب خاص للمتابعة",
+      "phone": "رقم الهاتف"
+    },
+    "password": {
+      "title": "تغيير كلمة المرور",
+      "currentPassword": "كلمة المرور الحالية",
+      "newPassword": "كلمة المرور الجديدة",
+      "confirmPassword": "تأكيد كلمة المرور الجديدة",
+      "placeholder": "Password",
+      "saveChanges": "حفظ التغيرات"
+    },
+    "common": {
+      "save": "حفظ",
+      "saving": "جاري الحفظ..."
+    }
+  },
+  "productInfo": {
+    "reviews": "تقييمات",
+    "discount": "خصم",
+    "moreDetails": "المزيد من التفاصيل",
+    "quantity": "الكمية",
+    "addToCart": "اضف الى السلة",
+    "category": "التصنيف",
+    "tags": "كلمات مفتاحية",
+    "tabs": {
+      "additionalInfo": "معلومات إضافية",
+      "reviews": "تقييمات العملاء"
+    },
+    "additionalInfo": {
+      "weight": "الوزن",
+      "type": "النوع",
+      "classification": "التصنيف",
+      "stockStatus": "حالة المخزون",
+      "tags": "الكلمات المفتاحية"
+    },
+    "reviews": {
+      "keywords": "كلمات مفتاحية",
+      "viewMore": "رؤية المزيد",
+      "showLess": "عرض أقل"
+    },
+    "video": {
+      "playing": "جاري تشغيل الفيديو"
+    },
+    "badges": {
+      "safeProduct": "منتج آمن",
+      "safeDescription": "لا يوجد ما يدعو للقلق",
+      "organic": "100% عضوي",
+      "organicDescription": "100% عضوي"
+    },
+    "relatedProducts": "منتجات ذات صلة"
+  },
+  "wishlist": {
+    "title": "قائمة المفضلة",
+    "empty": "قائمة المفضلة فارغة",
+    "addToWishlist": "إضافة للمفضلة",
+    "removeFromWishlist": "إزالة من المفضلة",
+    "addedToWishlist": "تم إضافته للمفضلة!",
+    "removedFromWishlist": "تم إزالته من المفضلة!",
+    "clearWishlist": "مسح قائمة المفضلة",
+    "wishlistCleared": "تم مسح قائمة المفضلة!",
+    "totalItems": "إجمالي العناصر",
+    "actions": {
+      "addToCart": "إضافة للسلة",
+      "remove": "إزالة",
+      "viewDetails": "عرض التفاصيل"
+    }
   }
 }

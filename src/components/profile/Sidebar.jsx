@@ -25,8 +25,8 @@ const Sidebar = ({ activeTab = 'dashboard', onTabChange }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 sticky top-4">
-      <h2 className="text-lg font-bold text-gray-900 mb-6">Navigation</h2>
+    <div className="rounded-sm border border-gray-200 sticky top-4 py-10">
+      <h2 className="text-lg font-bold text-gray-900 mb-6 px-6">Navigation</h2>
       
       <nav className="space-y-2">
         {navigationItems.map((item) => {
@@ -37,9 +37,9 @@ const Sidebar = ({ activeTab = 'dashboard', onTabChange }) => {
             <button
               key={item.id}
               onClick={() => handleItemClick(item)}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${
+              className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-colors ${
                 isActive
-                  ? 'bg-green-50 border-l-4 border-green-600 text-gray-900'
+                  ? 'bg-green-50 border-l-3 border-[var(--color-primary)] text-gray-900'
                   : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
               }`}
             >

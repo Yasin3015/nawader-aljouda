@@ -4,10 +4,24 @@ import ProfileInfo from '../components/profile/ProfileInfo';
 import BillingAddress from '../components/profile/BillingAddress';
 import RecentOrders from '../components/profile/RecentOrders';
 import OrderHistory from '../components/profile/OrderHistory';
+import OrderDetails from '../components/OrderDetails/OrderDetails';
+import SettingsSidebar from '../components/Settings/SettingsSidebar';
+import AccountSettings from '../components/Settings/AccountSettings';
+import BillingAddressSettings from '../components/Settings/BillingAddressSettings';
+import ChangePassword from '../components/Settings/ChangePassword';
 import WishlistTable from '../components/WishList/WishlistTable';
+import WishlistItem from '../components/WishList/WishlistItem';
+import { useWishlist } from '../contexts/WishlistContext';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { allOrders } from '../FakeData/AllOrders';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
+  const [selectedOrder, setSelectedOrder] = useState(null);
+  const { items: wishlistItems, totalItems: wishlistTotalItems, clearWishlist } = useWishlist();
+  const { t } = useTranslation();
+  const navigate = useNavigate()
 
   // Sample user data
   const userData = {
@@ -65,6 +79,41 @@ const Profile = () => {
     }
   ];
 
+  // Sample detailed order data for OrderDetails component
+  const sampleOrderDetails = {
+    id: '#4152',
+    date: '8 سبتمبر 2020',
+    payment: 'Paypal',
+    total: 365.00,
+    discount: '20%',
+    shipping: 'مجاني',
+    grandTotal: 84.00,
+    statusStep: 2,
+    customer: {
+      name: 'Dainne Russell',
+      address: '4140 Parker Rd. Allentown, New Mexico 31134',
+      email: 'dainne.ressell@gmail.com',
+      phone: '(671) 555-0110'
+    },
+    items: [
+      {
+        name: 'اسم المنتج',
+        price: 14.00,
+        quantity: 5
+      },
+      {
+        name: 'اسم المنتج',
+        price: 25.00,
+        quantity: 2
+      },
+      {
+        name: 'اسم المنتج',
+        price: 18.50,
+        quantity: 3
+      }
+    ]
+  };
+
   // Event handlers
   const handleTabChange = (tabId) => {
     setActiveTab(tabId);
@@ -76,16 +125,19 @@ const Profile = () => {
     // Handle edit profile logic
   };
 
-  
-
-  const handleViewAllOrders = () => {
-    console.log('View all orders clicked');
-    // Handle view all orders logic
-  };
 
   const handleViewOrderDetails = (order) => {
-    console.log('View order details:', order);
-    // Handle view order details logic
+    setSelectedOrder(sampleOrderDetails);
+    setActiveTab('order-details');
+  };
+
+  const handleBackToOrders = () => {
+    setSelectedOrder(null);
+    setActiveTab('order-history');
+  };
+
+  const handleViewAllOrders = (order) => {
+    setActiveTab('order-history');
   };
 
   // Render content based on active tab
@@ -106,23 +158,87 @@ const Profile = () => {
           </div>
         );
       case 'order-history':
-        return <OrderHistory />;
+        return (
+          <OrderHistory
+            title="My Recent Orders"
+            orders={allOrders}
+            ordersPerPage={10}
+            onViewDetails={handleViewOrderDetails}
+          />
+        );
+      case 'order-details':
+        return selectedOrder ? (
+          <OrderDetails 
+            orderData={selectedOrder}
+            onBack={handleBackToOrders}
+          />
+        ) : (
+          <div className="bg-white rounded-lg shadow-sm p-6">
+            <p className="text-gray-500">No order selected</p>
+          </div>
+        );
       case 'wishlist':
         return (
-          <WishlistTable />
+          <div className="space-y-6">
+            <div className="bg-white rounded-lg shadow-sm p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-semibold text-gray-900">
+                  {t('wishlist.title')}
+                </h2>
+                <div className="flex items-center gap-4">
+                  <span className="text-sm text-gray-500">
+                    {wishlistTotalItems} {t('wishlist.totalItems')}
+                  </span>
+                  {wishlistTotalItems > 0 && (
+                    <button
+                      onClick={clearWishlist}
+                      className="text-red-600 hover:text-red-700 text-sm font-medium"
+                    >
+                      {t('wishlist.clearWishlist')}
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {wishlistItems.length === 0 ? (
+                <div className="text-center py-12">
+                  <Heart className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">
+                    {t('wishlist.empty')}
+                  </h3>
+                  <p className="text-gray-500 mb-6">
+                    Add items to your wishlist by clicking the heart icon on any product.
+                  </p>
+                  <button
+                    onClick={() => navigate('/browse')}
+                    className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                  >
+                    Browse Products
+                  </button>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {wishlistItems.map((item) => (
+                    <WishlistItem key={item.id} item={item} />
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
         );
       case 'shopping-cart':
         return (
           <div className="bg-white rounded-lg shadow-sm p-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">Shopping Cart</h2>
-            <p className="text-gray-500">Your cart is empty.</p>
+            <p className="text-gray-500">Your cart items will appear here.</p>
           </div>
         );
       case 'settings':
         return (
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Settings</h2>
-            <p className="text-gray-500">Settings page coming soon.</p>
+          <div className="space-y-6">
+            <AccountSettings />
+            <BillingAddressSettings />
+            <ChangePassword />
           </div>
         );
       case 'logout':

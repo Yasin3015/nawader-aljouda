@@ -15,7 +15,6 @@ const BillingAddress = ({ address, onEditAddress }) => {
       <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-4">
         Billing Address
       </h3>
-      
       <div className="space-y-3">
         {/* Name */}
         <div>
