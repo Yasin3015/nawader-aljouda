@@ -227,6 +227,29 @@
       ]
     }
   },
+  "trustedStore": {
+    "title": "موثوقون دائمًا",
+    "subtitle": "أفضل أسعار ومعادن مضمونة",
+    "description": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة. تم توليده من مولد النص العربي لتكوين نماذج عرض النصوص في التصميمات المختلفة.",
+    "features": {
+      "reviews": {
+        "title": "تقييمات العملاء",
+        "description": "عملاؤنا السعداء"
+      },
+      "support": {
+        "title": "دعم ممتاز 24/7",
+        "description": "تواصل فوري معنا"
+      },
+      "shipping": {
+        "title": "شحن مجاني",
+        "description": "شحن مجاني مع خصم"
+      },
+      "payment": {
+        "title": "دفع آمن 100%",
+        "description": "نضمن سلامة أموالك"
+      }
+    }
+  },
   "orderDetails": {
     "title": "Order Details",
     "subtitle": "{{count}} orders - {{date}}",
@@ -348,6 +371,56 @@
       "addToCart": "Add to Cart",
       "remove": "Remove",
       "viewDetails": "View Details"
+    }
+  },
+  "profile": {
+    "sidebar": {
+      "navigation": "Navigation",
+      "dashboard": "Dashboard",
+      "orderHistory": "Order History",
+      "settings": "Settings",
+      "deleteAccount": "Delete Account"
+    }
+  },
+  "newsletter": {
+    "title": "Subscribe to Our Newsletter",
+    "description": "This is sample text that can be replaced in the same space. This text was generated from an Arabic text generator",
+    "button": "Subscribe",
+    "placeholder": "Enter your email address here"
+  },
+  "contact": {
+    "info": {
+      "address": {
+        "title": "Address",
+        "value": "276 Ali Ahmed Hussein, Egypt"
+      },
+      "email": {
+        "title": "Email",
+        "value": "Pemy@gmail.com\nsbqj.pemy@gmail.com"
+      },
+      "phone": {
+        "title": "Phone",
+        "value": "(+20) 300-254\n(+64) 333-3487"
+      }
+    },
+    "form": {
+      "title": "Hello, We're Here!",
+      "description": "For any inquiries, please contact us by filling out the form or sending a message",
+      "placeholders": {
+        "name": "Name",
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Message"
+      },
+      "submit": "Send",
+      "sending": "Sending...",
+      "success": "Your message has been sent successfully!"
+    },
+    "validation": {
+      "name": "Name must be at least 2 characters",
+      "email": "Invalid email address",
+      "subject": "Subject must be at least 3 characters",
+      "message": "Message must be at least 10 characters"
     }
   }
 }

@@ -1,25 +1,14 @@
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import React, { useState } from "react";
+import { Quote } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import { useTranslation } from "react-i18next";
 
 const TestimonialSection = () => {
   const { t } = useTranslation();
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const testimonials = t('about.testimonials.items', { returnObjects: true });
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % Math.ceil(testimonials.length / 3));
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + Math.ceil(testimonials.length / 3)) % Math.ceil(testimonials.length / 3));
-  };
-
-  const getVisibleTestimonials = () => {
-    const start = currentSlide * 3;
-    return testimonials.slice(start, start + 3);
-  };
+  const testimonials = t("about.testimonials.items", { returnObjects: true });
 
   const renderStars = (rating) => {
     return Array.from({ length: 5 }, (_, index) => (
@@ -40,90 +29,87 @@ const TestimonialSection = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            {t('about.testimonials.title')}
+            {t("about.testimonials.title")}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            {t('about.testimonials.description')}
+            {t("about.testimonials.description")}
           </p>
         </div>
 
-        {/* Testimonials Carousel */}
-        <div className="relative">
-          <div className="flex items-center justify-between mb-8">
-            <button
-              onClick={prevSlide}
-              className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors"
-            >
-              <ChevronLeft className="w-6 h-6 text-white" />
-            </button>
-            
-            <h3 className="text-2xl font-bold text-gray-900">{t('about.testimonials.carousel.title')}</h3>
-            
-            <button
-              onClick={nextSlide}
-              className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors"
-            >
-              <ChevronRight className="w-6 h-6 text-white" />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {getVisibleTestimonials().map((testimonial) => (
-              <div key={testimonial.id} className="bg-gray-50 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
-                {/* Quote Icon */}
-                <div className="mb-6">
-                  <Quote className="w-12 h-12 text-green-500" />
-                </div>
-
-                {/* Quote Text */}
-                <blockquote className="text-gray-700 leading-relaxed mb-6 italic">
-                  "{testimonial.quote}"
-                </blockquote>
-
-                {/* Rating */}
-                <div className="flex items-center gap-1 mb-4">
-                  {renderStars(5)}
-                </div>
-
-                {/* Customer Info */}
-                <div className="border-t border-gray-200 pt-4">
-                  <h4 className="font-bold text-gray-900 text-lg">{testimonial.name}</h4>
-                  <p className="text-gray-600">{testimonial.status}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Dots Indicator */}
-          <div className="flex justify-center mt-8 gap-2">
-            {Array.from({ length: Math.ceil(testimonials.length / 3) }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  index === currentSlide ? 'bg-green-600' : 'bg-gray-300'
-                }`}
+        {/* Swiper Carousel */}
+        <Swiper
+          modules={[Pagination, Autoplay]}
+          spaceBetween={30}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 4000 }}
+          breakpoints={{
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
+          {testimonials.map((testimonial) => (
+            <SwiperSlide key={testimonial.id} className="py-8">
+              <TestimonialCard
+                testimonial={testimonial}
+                renderStars={renderStars}
               />
-            ))}
-          </div>
-        </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="bg-green-50 rounded-lg p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              {t('about.testimonials.cta.title')}
-            </h3>
-            <p className="text-gray-600 mb-6">
-              {t('about.testimonials.cta.description')}
-            </p>
-            <button className="bg-green-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors">
-              {t('about.testimonials.cta.button')}
-            </button>
-          </div>
-        </div>
       </div>
     </section>
+  );
+};
+
+const TestimonialCard = ({ testimonial, renderStars }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div className="bg-gray-50 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow h-full flex flex-col justify-between">
+      {/* Quote Icon */}
+      <div className="mb-6">
+        <Quote className="w-12 h-12 text-green-500" />
+      </div>
+
+      {/* Quote Text */}
+      <blockquote
+        className={`text-gray-700 leading-relaxed italic mb-4 ${
+          expanded ? "" : "line-clamp-2"
+        }`}
+      >
+        "{testimonial.quote}"
+      </blockquote>
+
+      {/* Read More Button */}
+      {testimonial.quote.split(" ").length > 15 && (
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="text-green-600 text-sm font-semibold hover:underline mb-4 self-start"
+        >
+          {expanded ? "Show less" : "Read more"}
+        </button>
+      )}
+
+      {/* Rating */}
+      <div className="flex items-center gap-1 mb-4">{renderStars(5)}</div>
+
+      {/* Customer Info */}
+      <div className="border-t border-gray-200 pt-4 flex items-center gap-4">
+        <img
+          src={testimonial.avatar}
+          alt={testimonial.name}
+          className="w-12 h-12 rounded-full object-cover"
+        />
+        <div>
+          <h4 className="font-bold text-gray-900 text-lg">
+            {testimonial.name}
+          </h4>
+          <p className="text-gray-600">{testimonial.status}</p>
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -1,30 +1,30 @@
-// src/components/common/FormInput.jsx
+// src/components/common/FormTextarea.jsx
 import React from "react";
 
-const FormInput = ({ 
+const FormTextarea = ({ 
   name, 
-  type = "text", 
   placeholder, 
   value, 
   onChange, 
   error,
   required = false,
   disabled = false,
+  rows = 4,
   className = ""
 }) => {
   return (
     <div className="w-full">
-      <input
+      <textarea
         name={name}
-        type={type}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
         required={required}
         disabled={disabled}
-        className={`w-full border rounded-md px-2.5 py-2 
+        rows={rows}
+        className={`w-full border rounded-lg px-4 py-3 
           focus:outline-none focus:ring-2 focus:ring-green-500
-          disabled:bg-gray-100 disabled:cursor-not-allowed
+          disabled:bg-gray-100 disabled:cursor-not-allowed resize-none
           ${error ? 'border-red-500' : 'border-gray-300'}
           ${className}`}
       />
@@ -37,4 +37,4 @@ const FormInput = ({
   );
 };
 
-export default FormInput;
+export default FormTextarea;

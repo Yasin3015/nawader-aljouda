@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { 
   LayoutDashboard, 
   Clock, 
@@ -7,11 +8,13 @@ import {
 } from 'lucide-react';
 
 const Sidebar = ({ activeTab = 'dashboard', onTabChange }) => {
+  const { t } = useTranslation();
+  
   const navigationItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { id: 'order-history', label: 'Order History', icon: Clock },
-    { id: 'settings', label: 'Settings', icon: Settings },
-    { id: 'deleteAccount', label: 'Delete Account', icon: Trash }
+    { id: 'dashboard', label: t('profile.sidebar.dashboard'), icon: LayoutDashboard },
+    { id: 'order-history', label: t('profile.sidebar.orderHistory'), icon: Clock },
+    { id: 'settings', label: t('profile.sidebar.settings'), icon: Settings },
+    { id: 'deleteAccount', label: t('profile.sidebar.deleteAccount'), icon: Trash }
   ];
 
   const handleItemClick = (item) => {
@@ -22,7 +25,7 @@ const Sidebar = ({ activeTab = 'dashboard', onTabChange }) => {
 
   return (
     <div className="rounded-sm border border-gray-200 sticky top-4 py-10">
-      <h2 className="text-lg font-bold text-gray-900 mb-6 px-6">Navigation</h2>
+      <h2 className="text-lg font-bold text-gray-900 mb-6 px-6">{t('profile.sidebar.navigation')}</h2>
       
       <nav className="space-y-2">
         {navigationItems.map((item) => {

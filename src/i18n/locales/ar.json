@@ -291,5 +291,14 @@
       "remove": "إزالة",
       "viewDetails": "عرض التفاصيل"
     }
+  },
+  "profile": {
+    "sidebar": {
+      "navigation": "التنقل",
+      "dashboard": "لوحة التحكم",
+      "orderHistory": "سجل الطلبات",
+      "settings": "الإعدادات",
+      "deleteAccount": "حذف الحساب"
+    }
   }
 }
