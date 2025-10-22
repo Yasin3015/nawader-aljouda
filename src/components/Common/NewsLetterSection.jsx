@@ -20,15 +20,15 @@ export default function NewsletterSection() {
           </div>
 
           {/* Left side - Email input and social icons */}
-          <div className="!max-w-80 w-full md:w-1/2 flex flex-col lg:flex-row items-start gap-4 ">
+          <div className="bg-amber-900 w-full md:w-1/2 flex flex-col lg:flex-row items-start gap-4 ">
             {/* Email input with button */}
             <div className="!flex-1 rounded-full flex items-center bg-white overflow-hidden border border-gray-200">
               <input
                 type="email"
                 placeholder={t('newsletter.placeholder')}
-                className="flex-1 px-4 py-3 bg-transparent outline-none text-sm text-gray-600 "
+                className="flex-1 px-1 py-1 md:px-4 md:py-3 bg-transparent outline-none text-sm text-gray-600 "
               />
-              <button className="bg-green-500 rounded-full hover:bg-green-600 text-white px-6 py-3 font-semibold transition-colors">
+              <button className="bg-green-500 rounded-full hover:bg-green-600 text-white px-2 py-2 md:px-6 md:py-3 transition-colors">
                 {t('newsletter.button')}
               </button>
             </div>
