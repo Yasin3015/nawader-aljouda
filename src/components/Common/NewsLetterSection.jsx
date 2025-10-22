@@ -20,7 +20,7 @@ export default function NewsletterSection() {
           </div>
 
           {/* Left side - Email input and social icons */}
-          <div className="!max-w-full w-full md:w-1/2 flex flex-col lg:flex-row items-start gap-4 ">
+          <div className="!max-w-80 w-full md:w-1/2 flex flex-col lg:flex-row items-start gap-4 ">
             {/* Email input with button */}
             <div className="!flex-1 rounded-full flex items-center bg-white overflow-hidden border border-gray-200">
               <input
