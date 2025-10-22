@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Container from "../../UI/Container";
 import MobileMenu from "./MobileMenu";
 import { useCart } from "../../../contexts/CartContext";
-import search from '../../../assets/icons/search.svg';
+import search from '../../../assets/icons/Search.svg';
 import cartIcon from '../../../assets/icons/bag.svg';
 import menu from '../../../assets/icons/menu.svg';
 import logo from '../../../assets/images/mobileLogo.svg';
