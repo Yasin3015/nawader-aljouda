@@ -5,7 +5,7 @@ import Container from "../../UI/Container";
 import Button from "../../UI/Button";
 import logoEn from "../../../assets/images/Logo-en.svg";
 import logoAr from "../../../assets/images/Logo-ar.svg";
-import cartIcon from "../../../assets/icons/Bag.svg";
+import cartIcon from "../../../assets/icons/bag.svg";
 import LanguageSwitcher from "./LanguageSwitcher";
 import SearchComponent from "../../UI/SearchComponent";
 import NavLinks from "./NavLinks";
