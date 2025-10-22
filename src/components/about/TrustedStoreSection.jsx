@@ -121,11 +121,7 @@ const TrustedStoreSection = () => {
                 {features.map((feature, index) => (
                   <div
                     key={index}
-                    className={`flex items-start gap-3 p-4 ${
-                      isRTL
-                        ? "flex-row-reverse text-right"
-                        : "flex-row text-left"
-                    }`}
+                    className={`flex items-start gap-3 p-4 justify-start`}
                   >
                     <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
                       {feature.icon}

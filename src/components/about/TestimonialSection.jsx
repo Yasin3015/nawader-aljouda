@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Quote } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -7,8 +7,15 @@ import "swiper/css/pagination";
 import { useTranslation } from "react-i18next";
 
 const TestimonialSection = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const testimonials = t("about.testimonials.items", { returnObjects: true });
+
+  const [isRTL, setIsRTL] = useState(i18n.language === "ar");
+
+  // ✅ تحديث الاتجاه لما اللغة تتغير
+  useEffect(() => {
+    setIsRTL(i18n.language === "ar");
+  }, [i18n.language]);
 
   const renderStars = (rating) => {
     return Array.from({ length: 5 }, (_, index) => (
@@ -25,7 +32,7 @@ const TestimonialSection = () => {
 
   return (
     <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4" dir={isRTL ? "rtl" : "ltr"}>
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
@@ -38,11 +45,18 @@ const TestimonialSection = () => {
 
         {/* Swiper Carousel */}
         <Swiper
+          key={isRTL ? "rtl" : "ltr"} // ✅ لإجبار إعادة الإنشاء عند تغيير اللغة
           modules={[Pagination, Autoplay]}
           spaceBetween={30}
           slidesPerView={1}
           pagination={{ clickable: true }}
-          autoplay={{ delay: 4000 }}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+            reverseDirection: isRTL, // ✅ يعكس الاتجاه مع اللغة
+          }}
+          dir={isRTL ? "rtl" : "ltr"}
+          style={{ direction: isRTL ? "rtl" : "ltr" }}
           breakpoints={{
             768: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
@@ -53,23 +67,27 @@ const TestimonialSection = () => {
               <TestimonialCard
                 testimonial={testimonial}
                 renderStars={renderStars}
+                isRTL={isRTL}
               />
             </SwiperSlide>
           ))}
         </Swiper>
-
       </div>
     </section>
   );
 };
 
-const TestimonialCard = ({ testimonial, renderStars }) => {
+const TestimonialCard = ({ testimonial, renderStars, isRTL }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="bg-gray-50 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow h-full flex flex-col justify-between">
+    <div
+      className={`bg-gray-50 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow h-full flex flex-col justify-between ${
+        isRTL ? "text-right" : "text-left"
+      }`}
+    >
       {/* Quote Icon */}
-      <div className="mb-6">
+      <div className={`mb-6 ${isRTL ? "ml-auto" : ""}`}>
         <Quote className="w-12 h-12 text-green-500" />
       </div>
 
@@ -79,7 +97,7 @@ const TestimonialCard = ({ testimonial, renderStars }) => {
           expanded ? "" : "line-clamp-2"
         }`}
       >
-        "{testimonial.quote}"
+        “{testimonial.quote}”
       </blockquote>
 
       {/* Read More Button */}
@@ -88,15 +106,31 @@ const TestimonialCard = ({ testimonial, renderStars }) => {
           onClick={() => setExpanded(!expanded)}
           className="text-green-600 text-sm font-semibold hover:underline mb-4 self-start"
         >
-          {expanded ? "Show less" : "Read more"}
+          {expanded
+            ? isRTL
+              ? "عرض أقل"
+              : "Show less"
+            : isRTL
+            ? "قراءة المزيد"
+            : "Read more"}
         </button>
       )}
 
       {/* Rating */}
-      <div className="flex items-center gap-1 mb-4">{renderStars(5)}</div>
+      <div
+        className={`flex items-center gap-1 mb-4 ${
+          isRTL ? "justify-end" : "justify-start"
+        }`}
+      >
+        {renderStars(5)}
+      </div>
 
       {/* Customer Info */}
-      <div className="border-t border-gray-200 pt-4 flex items-center gap-4">
+      <div
+        className={`border-t border-gray-200 pt-4 flex items-center gap-4 ${
+          isRTL ? "flex-row-reverse text-right" : ""
+        }`}
+      >
         <img
           src={testimonial.avatar}
           alt={testimonial.name}
