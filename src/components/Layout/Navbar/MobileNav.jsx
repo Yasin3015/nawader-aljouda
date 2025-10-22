@@ -39,11 +39,11 @@ const MobileNav = () => {
     <>
       {/* 🔹 Search Slide-down */}
       <div
-        className={`fixed top-0 left-0 w-full bg-white shadow-md z-50 transition-transform duration-300 ease-in-out ${
+        className={`h-22 fixed top-0 left-0 w-full bg-white shadow-md z-50 transition-transform duration-300 ease-in-out ${
           showSearch ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="relative p-4 border-b border-gray-200">
+        <div className="relative p-4 border-b border-gray-200 flex h-full !items-end">
           <button
             onClick={() => setShowSearch(false)}
             className={`absolute top-3 ${isRTL ? "left-4" : "right-4"} text-gray-600 text-xl`}
