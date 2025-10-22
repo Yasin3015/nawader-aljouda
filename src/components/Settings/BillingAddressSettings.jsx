@@ -48,7 +48,7 @@ const BillingAddressSettings = () => {
   ];
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-6">
+    <div className="rounded-md border border-gray-200 p-6">
       <h2 className="text-xl font-semibold text-gray-900 mb-6">
         {t('settings.billing.title')}
       </h2>
@@ -62,7 +62,7 @@ const BillingAddressSettings = () => {
             <input
               {...register('firstName')}
               type="text"
-              className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 ${
+              className={`w-full px-3 py-2 border rounded-sm focus:outline-none focus:ring-2 focus:ring-green-500 ${
                 errors.firstName ? 'border-red-500' : 'border-gray-300'
               }`}
             />
@@ -78,7 +78,7 @@ const BillingAddressSettings = () => {
             <input
               {...register('lastName')}
               type="text"
-              className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 ${
+              className={`w-full px-3 py-2 border rounded-sm focus:outline-none focus:ring-2 focus:ring-green-500 ${
                 errors.lastName ? 'border-red-500' : 'border-gray-300'
               }`}
             />
@@ -95,7 +95,7 @@ const BillingAddressSettings = () => {
           <input
             {...register('companyName')}
             type="text"
-            className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 ${
+            className={`w-full px-3 py-2 border rounded-sm focus:outline-none focus:ring-2 focus:ring-green-500 ${
               errors.companyName ? 'border-red-500' : 'border-gray-300'
             }`}
           />
@@ -111,7 +111,7 @@ const BillingAddressSettings = () => {
           <input
             {...register('address')}
             type="text"
-            className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 ${
+            className={`w-full px-3 py-2 border rounded-sm focus:outline-none focus:ring-2 focus:ring-green-500 ${
               errors.address ? 'border-red-500' : 'border-gray-300'
             }`}
           />
@@ -127,7 +127,7 @@ const BillingAddressSettings = () => {
             </label>
             <select
               {...register('city')}
-              className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 ${
+              className={`w-full px-3 py-2 border rounded-sm focus:outline-none focus:ring-2 focus:ring-green-500 ${
                 errors.city ? 'border-red-500' : 'border-gray-300'
               }`}
             >
@@ -149,7 +149,7 @@ const BillingAddressSettings = () => {
             <input
               {...register('zipCode')}
               type="text"
-              className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 ${
+              className={`w-full px-3 py-2 border rounded-sm focus:outline-none focus:ring-2 focus:ring-green-500 ${
                 errors.zipCode ? 'border-red-500' : 'border-gray-300'
               }`}
             />
@@ -166,7 +166,7 @@ const BillingAddressSettings = () => {
           <input
             {...register('email')}
             type="email"
-            className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 ${
+            className={`w-full px-3 py-2 border rounded-sm focus:outline-none focus:ring-2 focus:ring-green-500 ${
               errors.email ? 'border-red-500' : 'border-gray-300'
             }`}
           />
@@ -182,7 +182,7 @@ const BillingAddressSettings = () => {
           <input
             {...register('phone')}
             type="tel"
-            className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 ${
+            className={`w-full px-3 py-2 border rounded-sm focus:outline-none focus:ring-2 focus:ring-green-500 ${
               errors.phone ? 'border-red-500' : 'border-gray-300'
             }`}
           />
@@ -195,7 +195,7 @@ const BillingAddressSettings = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-green-600 text-white px-6 py-2 rounded-sm hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? t('settings.common.saving') : t('settings.common.save')}
           </button>

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 const ReviewsSection = ({ reviews = [] }) => {
   const { t } = useTranslation();
   const [showAll, setShowAll] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   // Default reviews if none provided
   const defaultReviews = [
@@ -50,40 +51,57 @@ const ReviewsSection = ({ reviews = [] }) => {
 
   return (
     <div className="space-y-6">
-      {/* Keywords */}
-      <div className="text-sm text-gray-600">
-        {t('productInfo.reviews.keywords')}: الأكثر مبيعا معدن خطر جديد
-      </div>
 
       {/* Reviews List */}
       <div className="space-y-4">
         {reviewsToShow.map((review) => (
-          <div key={review.id} className="flex gap-4 p-4 bg-gray-50 rounded-lg">
-            {/* Avatar */}
-            <div className="flex-shrink-0">
-              <img
-                src={review.avatar}
-                alt={review.userName}
-                className="w-10 h-10 rounded-full object-cover"
-              />
-            </div>
-
-            {/* Review Content */}
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center justify-between mb-2">
-                <h4 className="font-semibold text-gray-900">{review.userName}</h4>
-                <span className="text-sm text-gray-500">{review.date}</span>
-              </div>
-              
-              <div className="flex text-yellow-400 text-sm mb-2">
-                {renderStars(review.rating)}
-              </div>
-              
-              <p className="text-gray-600 text-sm leading-relaxed">
-                {review.comment}
-              </p>
-            </div>
+          <div
+          key={review.id}
+          className="flex gap-4 p-4 bg-gray-50 lg:w-1/2 rounded-lg border-b-2 border-b-gray-200"
+        >
+          {/* Avatar */}
+          <div className="flex-shrink-0">
+            <img
+              src={review.avatar}
+              alt={review.userName}
+              className="w-10 h-10 rounded-full object-cover"
+            />
           </div>
+    
+          {/* Review Content */}
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center justify-between mb-2">
+              <h4 className="font-semibold text-gray-900">{review.userName}</h4>
+              <span className="text-sm text-gray-500">{review.date}</span>
+            </div>
+    
+            <div className="flex text-yellow-400 text-sm mb-2">
+              {renderStars(review.rating)}
+            </div>
+    
+            {/* Comment with truncation */}
+            <p
+              className={`text-gray-600 text-sm leading-relaxed transition-all duration-300 ${
+                expanded
+                  ? "line-clamp-none"
+                  : "line-clamp-2 overflow-hidden text-ellipsis"
+              }`}
+            >
+              {review.comment}
+            </p>
+    
+            {/* Show more / less button */}
+            {review.comment.length > 80 && (
+              <button
+                onClick={() => setExpanded(!expanded)}
+                className="mt-1 text-green-600 text-sm font-medium hover:underline focus:outline-none"
+              >
+                {expanded ? "Show less" : "Show more"}
+              </button>
+            )}
+          </div>
+        </div>
+      
         ))}
       </div>
 

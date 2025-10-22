@@ -135,7 +135,8 @@ const ProductCard = ({ product }) => {
         </div>
 
         <button
-          onClick={handleAddOrRemove}
+          onClick={()=>addToCart(product)
+          }
           className={`border cursor-pointer border-gray-200 p-2 transition rounded-full ${
             flag === "out of stock"
               ? "bg-gray-300 text-gray-600 cursor-not-allowed"

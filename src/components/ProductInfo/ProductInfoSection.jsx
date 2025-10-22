@@ -3,12 +3,14 @@ import { useTranslation } from 'react-i18next';
 import { Heart, ShoppingBag, Minus, Plus } from 'lucide-react';
 import { useCart } from '../../contexts/CartContext';
 import { useToast } from '../UI/ToastProvider';
+import { useWishlist } from '../../contexts/WishlistContext';
 
 const ProductInfoSection = ({ product }) => {
   const { t } = useTranslation();
   const { addToCart } = useCart();
   const { addToast } = useToast();
   const [quantity, setQuantity] = useState(1);
+  const { addToWishlist } = useWishlist();
 
   const {
     name = "اسم المنتج",
@@ -75,7 +77,7 @@ const ProductInfoSection = ({ product }) => {
             ${originalPrice}
           </span>
         </div>
-        <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+        <span className="bg-red-100 text-red-500 px-3 py-1 rounded-full text-sm font-medium">
           {discountPercentage}% {t('productInfo.discount')}
         </span>
       </div>
@@ -90,38 +92,36 @@ const ProductInfoSection = ({ product }) => {
         </button>
       </div>
 
-      {/* Quantity Selector */}
+      {/* Action Buttons */}
       <div className="flex items-center gap-4">
-        <span className="text-gray-700 font-medium">{t('productInfo.quantity')}:</span>
-        <div className="flex items-center border border-gray-300 rounded-lg">
+        {/* Quantity Selector */}
+      <div className="flex items-center gap-4">
+        <div className="flex items-center border border-gray-300 rounded-full p-1">
           <button
             onClick={() => handleQuantityChange(-1)}
-            className="p-2 hover:bg-gray-50 transition-colors"
+            className="p-2 hover:bg-gray-50 transition-colors w-8 h-8 border border-gray-300 rounded-full"
           >
-            <Minus className="w-4 h-4" />
+            <Minus className="w-4 h-4 " />
           </button>
-          <span className="px-4 py-2 border-x border-gray-300 min-w-[3rem] text-center">
+          <span className="px-4 text-center">
             {quantity}
           </span>
           <button
             onClick={() => handleQuantityChange(1)}
-            className="p-2 hover:bg-gray-50 transition-colors"
+            className="p-2 hover:bg-gray-50 transition-colors w-8 h-8 border border-gray-300 rounded-full"
           >
             <Plus className="w-4 h-4" />
           </button>
         </div>
       </div>
-
-      {/* Action Buttons */}
-      <div className="flex items-center gap-4">
         <button
-          onClick={handleAddToCart}
+          onClick={()=>addToCart(product)}
           className="flex items-center gap-2 bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors font-medium"
         >
           <ShoppingBag className="w-5 h-5" />
           {t('productInfo.addToCart')}
         </button>
-        <button className="p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+        <button onClick={()=>addToWishlist(product)} className="p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
           <Heart className="w-5 h-5 text-gray-600" />
         </button>
       </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ProductRow from './ProductRow';
 import ReviewsSection from './ReviewsSection';
+import ProductVideo from './ProductVideo';
 
 const ProductTabs = ({ product, relatedProducts = [] }) => {
   const { t } = useTranslation();
@@ -24,7 +25,7 @@ const ProductTabs = ({ product, relatedProducts = [] }) => {
     <div className="mt-8">
       {/* Tab Navigation */}
       <div className="border-b border-gray-200">
-        <nav className="flex space-x-8">
+        <nav className="flex space-x-8 justify-center">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -77,7 +78,9 @@ const AdditionalInfoContent = ({ product }) => {
   ];
 
   return (
-    <div className="space-y-4">
+    <>
+    <div className="!w-full flex flex-col md:flex-row items-center justify-between gap-4 md:gap-20">
+    <div className="!flex-1 !w-full">
       {additionalInfo.map((info, index) => (
         <ProductRow
           key={index}
@@ -86,8 +89,12 @@ const AdditionalInfoContent = ({ product }) => {
         />
       ))}
     </div>
+    <div className="w-full !md:w-2/3 !flex-1">
+      <ProductVideo/>
+    </div>
+    </div>
+    </>
   );
 };
 
-export default ProductTabs;
-
+export default ProductTabs

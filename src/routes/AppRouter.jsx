@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import { ProtectedRoute, GuestRoute } from "../components/Common/ProtecteRout";
 
 const UserLayout = lazy(() => import("../Layouts/UserLayout"));
 const AuthLayout = lazy(() => import("../Layouts/AuthLayout"));
@@ -13,7 +14,7 @@ const CartPage = lazy(() => import("../pages/CartPage"));
 const CheckoutPage = lazy(() => import("../pages/CheckoutPage"));
 const Profile = lazy(() => import("../pages/Profile"));
 const ProductInfo = lazy(() => import("../pages/ProductInfo"));
-const WishList = lazy(()=> import ('../pages/user/WishList'))
+const WishList = lazy(() => import('../pages/user/WishList'));
 const FAQ = lazy(() => import("../pages/FAQ"));
 
 // 🔐 Auth Pages
@@ -45,6 +46,7 @@ const AppRouter = createBrowserRouter(
           </Suspense>
         }
       >
+        {/* صفحات عامة - متاحة للجميع */}
         <Route
           index
           element={
@@ -86,38 +88,6 @@ const AppRouter = createBrowserRouter(
           }
         />
         <Route
-          path="wishlist"
-          element={
-            <Suspense fallback={<Loading />}>
-              <WishList />
-            </Suspense>
-          }
-        />
-        <Route
-          path="cart"
-          element={
-            <Suspense fallback={<Loading />}>
-              <CartPage />
-            </Suspense>
-          }
-        />
-        <Route
-          path="checkout"
-          element={
-            <Suspense fallback={<Loading />}>
-              <CheckoutPage />
-            </Suspense>
-          }
-        />
-        <Route
-          path="profile"
-          element={
-            <Suspense fallback={<Loading />}>
-              <Profile />
-            </Suspense>
-          }
-        />
-        <Route
           path="product/:productId"
           element={
             <Suspense fallback={<Loading />}>
@@ -125,10 +95,52 @@ const AppRouter = createBrowserRouter(
             </Suspense>
           }
         />
+
+        {/* صفحات محمية - محتاجة تسجيل دخول */}
+        <Route
+          path="wishlist"
+          element={
+            <ProtectedRoute>
+              <Suspense fallback={<Loading />}>
+                <WishList />
+              </Suspense>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="cart"
+          element={
+            <ProtectedRoute>
+              <Suspense fallback={<Loading />}>
+                <CartPage />
+              </Suspense>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="checkout"
+          element={
+            <ProtectedRoute>
+              <Suspense fallback={<Loading />}>
+                <CheckoutPage />
+              </Suspense>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="profile"
+          element={
+            <ProtectedRoute>
+              <Suspense fallback={<Loading />}>
+                <Profile />
+              </Suspense>
+            </ProtectedRoute>
+          }
+        />
       </Route>
 
       {/* ======================== */}
-      {/* 🔐 Auth Routes */}
+      {/* 🔐 Auth Routes - للزوار فقط */}
       {/* ======================== */}
       <Route
         path="/auth"
@@ -141,17 +153,21 @@ const AppRouter = createBrowserRouter(
         <Route
           path="login"
           element={
-            <Suspense fallback={<Loading />}>
-              <Login />
-            </Suspense>
+            <GuestRoute>
+              <Suspense fallback={<Loading />}>
+                <Login />
+              </Suspense>
+            </GuestRoute>
           }
         />
         <Route
           path="signup"
           element={
-            <Suspense fallback={<Loading />}>
-              <Signup />
-            </Suspense>
+            <GuestRoute>
+              <Suspense fallback={<Loading />}>
+                <Signup />
+              </Suspense>
+            </GuestRoute>
           }
         />
       </Route>

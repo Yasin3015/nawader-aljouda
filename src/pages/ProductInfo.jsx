@@ -72,42 +72,6 @@ const ProductInfo = () => {
     ]
   };
 
-  const relatedProducts = [
-    {
-      id: 1,
-      name: 'plastic',
-      price: 14.99,
-      originalPrice: 20.09,
-      discountPercentage: 50,
-      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=300&fit=crop',
-      rating: 5,
-      flag: 'sale'
-    },
-    {
-      id: 2,
-      name: 'Chanise Cabbage',
-      price: 14.99,
-      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=300&fit=crop',
-      rating: 5,
-      flag: 'new'
-    },
-    {
-      id: 3,
-      name: 'Green Capsicum',
-      price: 14.99,
-      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=300&fit=crop',
-      rating: 5,
-      flag: 'new'
-    },
-    {
-      id: 4,
-      name: 'Ladies Finger',
-      price: 14.99,
-      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=300&fit=crop',
-      rating: 5,
-      flag: 'new'
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -124,7 +88,7 @@ const ProductInfo = () => {
         {/* Main Product Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
           {/* Left Column - Product Images */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-7">
             <ProductImageGallery 
               images={product.images}
               productName={product.name}
@@ -132,29 +96,21 @@ const ProductInfo = () => {
           </div>
 
           {/* Middle Column - Product Info */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-5">
             <ProductInfoSection product={product} />
-          </div>
-
-          {/* Right Column - Video and Badges */}
-          <div className="lg:col-span-3">
-            <ProductVideo 
-              videoUrl={product.videoUrl}
-              productName={product.name}
-            />
           </div>
         </div>
 
         {/* Tabs Section */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+        <div className="p-6 mb-8">
           <ProductTabs 
             product={product}
-            relatedProducts={relatedProducts}
+            // relatedProducts={relatedProducts}
           />
         </div>
 
         {/* Related Products Section */}
-        <RelatedProductsSection products={relatedProducts} />
+        <RelatedProductsSection />
       </div>
     </div>
   );

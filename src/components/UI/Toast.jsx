@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle, X } from 'lucide-react';
+import { AlertCircle, CheckCircle, Info, X } from 'lucide-react';
 
 const Toast = ({ message, type = 'success', duration = 3000, onClose }) => {
   const [isVisible, setIsVisible] = useState(true);
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false);
@@ -19,13 +18,13 @@ const Toast = ({ message, type = 'success', duration = 3000, onClose }) => {
   };
 
   const getToastStyles = () => {
-    switch (type) {
+    switch (type.appearance) {
       case 'success':
         return 'bg-green-500 text-white';
       case 'error':
         return 'bg-red-500 text-white';
       case 'warning':
-        return 'bg-yellow-500 text-white';
+        return 'bg-[var(--color-warning)] text-white';
       case 'info':
         return 'bg-blue-500 text-white';
       default:
@@ -43,9 +42,9 @@ const Toast = ({ message, type = 'success', duration = 3000, onClose }) => {
     >
       <div className={`
         ${getToastStyles()}
-        rounded-lg shadow-lg p-4 flex items-center gap-3
+        rounded-sm shadow-sm p-4 flex items-center gap-3
       `}>
-        <CheckCircle className="w-5 h-5 flex-shrink-0" />
+        {type.appearance === 'success' ? <CheckCircle className="w-5 h-5 flex-shrink-0" /> : type.appearance === 'warning' ? <AlertCircle className="w-5 h-5 flex-shrink-0" /> :type.appearance === 'info' ? <Info className="w-5 h-5 flex-shrink-0" /> : <X className="w-5 h-5 flex-shrink-0" />}
         <span className="flex-1 text-sm font-medium">{message}</span>
         <button
           onClick={handleClose}

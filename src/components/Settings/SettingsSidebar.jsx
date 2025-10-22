@@ -24,16 +24,6 @@ const SettingsSidebar = ({ activeTab, onTabChange }) => {
       icon: Package
     },
     {
-      id: 'wishlist',
-      label: t('settings.sidebar.wishlist'),
-      icon: Heart
-    },
-    {
-      id: 'shopping-cart',
-      label: t('settings.sidebar.shoppingCart'),
-      icon: ShoppingBag
-    },
-    {
       id: 'settings',
       label: t('settings.sidebar.settings'),
       icon: Settings

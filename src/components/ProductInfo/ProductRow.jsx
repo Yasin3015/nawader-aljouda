@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProductRow = ({ label, value, className = "" }) => {
   return (
-    <div className={`flex justify-between items-start py-2 ${className}`}>
+    <div className={`flex !w-full md:w-fit lg:max-w-1/2 !justify-between items-start py-2 ${className}`}>
       <span className="text-gray-600 font-medium min-w-0 flex-1">
         {label}:
       </span>

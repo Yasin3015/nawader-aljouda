@@ -13,11 +13,11 @@ const ProductVideo = ({ videoUrl, productName = "Product" }) => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="!w-full">
       {/* Video Player */}
       <div className="relative bg-gray-200 rounded-lg overflow-hidden aspect-video">
         {isPlaying ? (
-          <div className="w-full h-full flex items-center justify-center bg-gray-800">
+          <div className="w-full h-full flex items-center justify-center bg-black/50">
             <div className="text-white text-center">
               <p className="text-lg font-medium mb-2">{t('productInfo.video.playing')}</p>
               <p className="text-sm text-gray-300">{productName}</p>

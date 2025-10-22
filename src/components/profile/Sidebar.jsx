@@ -2,20 +2,16 @@ import React from 'react';
 import { 
   LayoutDashboard, 
   Clock, 
-  Heart, 
-  ShoppingBag, 
-  Settings, 
-  LogOut 
+  Settings,  
+  Trash
 } from 'lucide-react';
 
 const Sidebar = ({ activeTab = 'dashboard', onTabChange }) => {
   const navigationItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'order-history', label: 'Order History', icon: Clock },
-    { id: 'wishlist', label: 'Wishlist', icon: Heart },
-    { id: 'shopping-cart', label: 'Shopping Cart', icon: ShoppingBag },
     { id: 'settings', label: 'Settings', icon: Settings },
-    { id: 'logout', label: 'Log-out', icon: LogOut }
+    { id: 'deleteAccount', label: 'Delete Account', icon: Trash }
   ];
 
   const handleItemClick = (item) => {

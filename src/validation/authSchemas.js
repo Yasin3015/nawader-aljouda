@@ -89,6 +89,7 @@ export const checkoutSchema = z.object({
     .max(500, "Order notes must be less than 500 characters")
     .optional(),
   paymentMethod: z
+  
     .enum(['cod', 'paypal', 'amazon'], {
       errorMap: () => ({ message: "Please select a valid payment method" })
     })

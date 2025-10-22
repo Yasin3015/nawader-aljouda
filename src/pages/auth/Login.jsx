@@ -1,27 +1,40 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/UI/Button";
 import { loginSchema } from "../../validation/authSchemas";
 import { login, seedMockUser } from "../../services/authApi";
+import { useAuth } from "../../contexts/AuthContext";
+import FormInput from "../../components/auth/FormInput";
+import PasswordInput from "../../components/auth/PasswordInput";
+import SocialLogin from "../../components/auth/SocialLogin";
+import ErrorMessage from "../../components/auth/ErrorMessage";
 
 seedMockUser();
 
 const Login = () => {
   const [form, setForm] = useState({ email: "", password: "", remember: false });
-  const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [apiError, setApiError] = useState("");
   const [loading, setLoading] = useState(false);
+  
+  const { login: authLogin } = useAuth();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setForm((s) => ({ ...s, [name]: type === "checkbox" ? checked : value }));
+    // امسح الخطأ الخاص بالحقل لما اليوزر يكتب
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
     setApiError("");
+
+    // التحقق من صحة البيانات
     const parsed = loginSchema.safeParse(form);
     if (!parsed.success) {
       const fieldErrors = {};
@@ -32,11 +45,20 @@ const Login = () => {
       setErrors(fieldErrors);
       return;
     }
+
     setLoading(true);
     try {
-      await login({ email: form.email, password: form.password });
-      // For now, just show a simple success; dashboard integration later
-      alert("Logged in! (Mock)");
+      // استدعاء API تسجيل الدخول
+      const response = await login({ 
+        email: form.email, 
+        password: form.password 
+      });
+
+      // حفظ بيانات المستخدم في الـ Context
+      authLogin(response.user, response.token);
+
+      // التوجيه للصفحة الرئيسية أو الداشبورد
+      navigate('/');
     } catch (err) {
       setApiError(err.message || "Something went wrong");
     } finally {
@@ -45,55 +67,69 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2 className="text-2xl font-semibold text-center mb-4">Sign In</h2>
-      <form onSubmit={handleSubmit} className="space-y-3">
-        {apiError ? (
-          <div className="text-sm text-[var(--color-danger)]">{apiError}</div>
-        ) : null}
-        <input
+    <div className="w-full max-w-md mx-auto">
+      <h2 className="text-2xl font-semibold text-center mb-6">Sign In</h2>
+      
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {/* رسالة خطأ عامة */}
+        {apiError && <ErrorMessage message={apiError} />}
+
+        {/* حقل البريد الإلكتروني */}
+        <FormInput
           name="email"
           type="email"
           placeholder="Email"
           value={form.email}
           onChange={handleChange}
-          className="w-full border rounded-[var(--radius-md)] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-soft-primary)]"
+          error={errors.email}
         />
-        {errors.email ? <p className="text-xs text-[var(--color-danger)]">{errors.email}</p> : null}
 
-        <div className="relative">
-          <input
-            name="password"
-            type={showPassword ? "text" : "password"}
-            placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
-            className="w-full border rounded-[var(--radius-md)] px-3 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-[var(--color-soft-primary)]"
-          />
-          <button type="button" onClick={() => setShowPassword((v) => !v)} className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-[var(--color-gray-6)]">
-            {showPassword ? "🙈" : "👁️"}
-          </button>
-        </div>
-        {errors.password ? <p className="text-xs text-[var(--color-danger)]">{errors.password}</p> : null}
+        {/* حقل كلمة المرور */}
+        <PasswordInput
+          name="password"
+          placeholder="Password"
+          value={form.password}
+          onChange={handleChange}
+          error={errors.password}
+        />
 
+        {/* تذكرني و نسيت كلمة المرور */}
         <div className="flex items-center justify-between text-sm">
-          <label className="flex items-center gap-2">
-            <input type="checkbox" name="remember" checked={form.remember} onChange={handleChange} />
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input 
+              type="checkbox" 
+              name="remember" 
+              checked={form.remember} 
+              onChange={handleChange}
+              className="cursor-pointer"
+            />
             <span>Remember me</span>
           </label>
-          <button type="button" className="text-[var(--color-gray-6)]">Forget Password</button>
+          <Link 
+            to="/auth/forgot-password" 
+            className="text-[var(--color-gray-6)] hover:text-[var(--color-primary)] transition"
+          >
+            Forget Password?
+          </Link>
         </div>
 
+        {/* زر تسجيل الدخول */}
         <Button type="submit" fullWidth disabled={loading}>
-          {loading ? "Logging..." : "Login"}
+          {loading ? "Logging in..." : "Login"}
         </Button>
 
-        <div className="grid grid-cols-2 gap-3 mt-2">
-          <button type="button" className="border rounded-[var(--radius-md)] py-2">Google</button>
-          <button type="button" className="border rounded-[var(--radius-md)] py-2">Facebook</button>
-        </div>
-        <p className="text-center text-sm mt-2">
-          Don’t have account? <Link to="/auth/signup" className="text-[var(--color-primary)] font-medium">Register</Link>
+        {/* تسجيل الدخول بالسوشيال ميديا */}
+        <SocialLogin />
+
+        {/* رابط التسجيل */}
+        <p className="text-center text-sm mt-4">
+          Don't have an account?{" "}
+          <Link 
+            to="/auth/signup" 
+            className="text-[var(--color-primary)] font-medium hover:underline"
+          >
+            Register
+          </Link>
         </p>
       </form>
     </div>
@@ -101,5 +137,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
