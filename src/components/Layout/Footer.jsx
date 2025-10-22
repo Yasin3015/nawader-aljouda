@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/images/mobilelogo.svg";
+import logo from "../../assets/images/mobileLogo.svg";
 import applePay from "../../assets/icons/apple-pay.svg";
 import visa from "../../assets/icons/visa.svg";
 import discover from "../../assets/icons/discover.svg";
