@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/images/mobileLogo.svg";
 import applePay from "../../assets/icons/apple-pay.svg";
 import visa from "../../assets/icons/visa.svg";
@@ -10,38 +11,38 @@ import { useTranslation } from "react-i18next";
 export default function Footer() {
   const { t } = useTranslation();
 
-  // بيانات الأقسام
+  // بيانات الأقسام مع روابط
   const footerSections = [
     {
       key: "account",
       title: t("footer.sections.account.title"),
       links: [
-        t("footer.sections.account.links.account"),
-        t("footer.sections.account.links.orderHistory"),
-        t("footer.sections.account.links.cart"),
-        t("footer.sections.account.links.wishlist")
-      ]
+        { name: t("footer.sections.account.links.account"), path: "/profile" },
+        { name: t("footer.sections.account.links.orderHistory"), path: "/profile" },
+        { name: t("footer.sections.account.links.cart"), path: "/cart" },
+        { name: t("footer.sections.account.links.wishlist"), path: "/wishlist" },
+      ],
     },
     {
-      key: "helps", 
+      key: "helps",
       title: t("footer.sections.helps.title"),
       links: [
-        t("footer.sections.helps.links.contact"),
-        t("footer.sections.helps.links.faqs"),
-        t("footer.sections.helps.links.terms"),
-        t("footer.sections.helps.links.privacy")
-      ]
+        { name: t("footer.sections.helps.links.contact"), path: "/contact" },
+        { name: t("footer.sections.helps.links.faqs"), path: "/faq" },
+        { name: t("footer.sections.helps.links.terms"), path: "/terms" },
+        { name: t("footer.sections.helps.links.privacy"), path: "/privacy" },
+      ],
     },
     {
       key: "proxy",
-      title: t("footer.sections.proxy.title"), 
+      title: t("footer.sections.proxy.title"),
       links: [
-        t("footer.sections.proxy.links.about"),
-        t("footer.sections.proxy.links.shop"),
-        t("footer.sections.proxy.links.product"),
-        t("footer.sections.proxy.links.track")
-      ]
-    }
+        { name: t("footer.sections.proxy.links.about"), path: "/about" },
+        { name: t("footer.sections.proxy.links.shop"), path: "/browse" },
+        { name: t("footer.sections.proxy.links.product"), path: "/browse" },
+        { name: t("footer.sections.proxy.links.track"), path: "/profile" },
+      ],
+    },
   ];
 
   // بيانات طرق الدفع
@@ -50,7 +51,7 @@ export default function Footer() {
     { src: visa, alt: t("footer.bottom.payments.visa") },
     { src: discover, alt: t("footer.bottom.payments.discover") },
     { src: mastercard, alt: t("footer.bottom.payments.master") },
-    { src: secure, alt: t("footer.bottom.payments.secure") }
+    { src: secure, alt: t("footer.bottom.payments.secure") },
   ];
 
   return (
@@ -58,7 +59,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-10">
         {/* Brand Section */}
         <div className="!flex-1 min-w-7/20">
-          <div className="flex items-center mb-4">
+          <Link to="/" className="flex items-center mb-4">
             <img
               src={logo}
               alt={t("footer.brandName")}
@@ -67,31 +68,43 @@ export default function Footer() {
             <h2 className="text-lg font-semibold text-white">
               {t("footer.brandName")}
             </h2>
-          </div>
+          </Link>
           <p className="text-sm mb-4 text-gray-400 leading-relaxed">
             {t("footer.description")}
           </p>
           <p className="text-sm">
-            <span className="text-white">{t("footer.contactPhone")}</span> or{" "}
-            <span className="text-green-500 underline">
+            <span className="text-white">{t("footer.contactPhone")}</span> {t("footer.or")}{" "}
+            <Link
+              to="/contact"
+              className="text-green-500 underline hover:text-green-400 transition-colors"
+            >
               {t("footer.contactEmail")}
-            </span>
+            </Link>
           </p>
         </div>
 
         {/* Sections */}
         <div className="flex flex-col sm:flex-row justify-center gap-10 min-w-2/4">
-          {footerSections.map((section, index) => (
-            <div 
+          {footerSections.map((section) => (
+            <div
               key={section.key}
-              className={`w-1/2 ${section.key === 'account' ? 'hidden md:block' : ''}`}
+              className={`w-1/2 ${
+                section.key === "account" ? "hidden md:block" : ""
+              }`}
             >
               <h3 className="text-white font-semibold mb-3">
                 {section.title}
               </h3>
               <ul className="space-y-2 text-sm">
                 {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>{link}</li>
+                  <li key={linkIndex}>
+                    <Link
+                      to={link.path}
+                      className="hover:text-[var(--color-primary)] transition-colors duration-200"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -102,17 +115,13 @@ export default function Footer() {
       {/* Bottom Section */}
       <div className="max-w-7xl mx-auto mt-10 border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
         <p>
-          {t("footer.brandName")} {t("footer.bottom.year")}. {t("footer.bottom.rights")}
+          {t("footer.brandName")} {t("footer.bottom.year")}.{" "}
+          {t("footer.bottom.rights")}
         </p>
 
         <div className="flex items-center space-x-3 mt-3 md:mt-0">
           {paymentMethods.map((method, index) => (
-            <img 
-              key={index}
-              src={method.src} 
-              alt={method.alt} 
-              className="h-6" 
-            />
+            <img key={index} src={method.src} alt={method.alt} className="h-6" />
           ))}
         </div>
       </div>

@@ -3,10 +3,20 @@
   "browse": "Browse",
   "about_us": "About Us",
   "contact_us": "Contact Us",
+  "menu": {
+    "title": "Menu",
+    "backAlt": "Go back"
+  },
+  "add_to_cart":"Add to cart",
+  "hurry_up_offer_ends_in":"Hurry up offer ends in",
+  "signupBtn": "Sign Up",
+  "login": "Log In",
   "cart": "Shopping Cart",
   "cartEmpty": "Your cart is empty",
   "checkout": "Checkout",
   "goToCart": "Go To Cart",
+  "lgin": "Login",
+  "signup": "Sign Up",
   "products": "Products",
   "product": "Product",
   "search": {
@@ -14,6 +24,11 @@
     "button": "Search",
     "loading": "Searching...",
     "noResults": "No items found"
+  },
+  "bestDeals": {
+    "title": "Best Deals",
+    "viewAll": "View All",
+    "showLess": "Show Less"
   },
   "buyIndustrialWaste": "Buy Industrial Waste",
   "safelyAndEfficiently": "Safely & Efficiently",
@@ -37,46 +52,50 @@
   "moneyBack": "Money-Back Guarantee",
   "moneyBackDesc": "30 Days Money Back Guarantee",
   "footer": {
-    "brandName": "Nawader Al-Jouda",
-    "description": "Morbi cursus porttitor enim lobortis molestie. Duis gravida turpis dui, eget bibendum magna congue nec.",
-    "contactPhone": "(219) 555–0114",
-    "contactEmail": "Proxy@gmail.com",
+    "brandName": "EcoMarket",
+    "description": "We provide high-quality products at affordable prices. Your satisfaction is our priority.",
+    "contactPhone": "Call us at +1 234 567 890",
+    "contactEmail": "contact@ecomarket.com",
+    "or": "or",
+
     "sections": {
       "account": {
         "title": "My Account",
         "links": {
-          "account": "My Account",
+          "account": "Account Details",
           "orderHistory": "Order History",
-          "cart": "Shopping Cart",
+          "cart": "My Cart",
           "wishlist": "Wishlist"
         }
       },
       "helps": {
-        "title": "Helps",
+        "title": "Help Center",
         "links": {
-          "contact": "Contact",
-          "faqs": "Faqs",
-          "terms": "Terms & Condition",
+          "contact": "Contact Us",
+          "faqs": "FAQs",
+          "terms": "Terms & Conditions",
           "privacy": "Privacy Policy"
         }
       },
       "proxy": {
-        "title": "Proxy",
+        "title": "Company",
         "links": {
-          "about": "About",
+          "about": "About Us",
           "shop": "Shop",
-          "product": "Product",
+          "product": "Products",
           "track": "Track Order"
         }
       }
     },
+
     "bottom": {
-      "rights": "All Rights Reserved",
       "year": "© 2025",
+      "rights": "All rights reserved.",
       "payments": {
         "apple": "Apple Pay",
         "visa": "Visa",
-        "master": "Mastercard",
+        "discover": "Discover",
+        "master": "MasterCard",
         "secure": "Secure Payment"
       }
     }

@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Star, Heart, Eye, ShoppingBag } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../../../contexts/CartContext";
+import { useWishlist } from "../../../contexts/WishlistContext";
 
 const BestSaleCard = ({ product }) => {
   const { t } = useTranslation();
+  const { addToCart, removeFromCart, items } = useCart();
+  // const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
+  const { addToWishlist, removeFromWishlist, isInWishlist } =
+    useWishlist() || {};
+  const isInWishlistItem = isInWishlist ? isInWishlist(product.id) : false;
+  const isInCart = items.some((cartItem) => cartItem.id === product.id);
   const {
     image,
     name,
@@ -22,6 +31,13 @@ const BestSaleCard = ({ product }) => {
     mins: 0,
     secs: 0,
   });
+
+  const handleWishlistToggle = () => {
+    if (isInWishlistItem) removeFromWishlist(id);
+    else addToWishlist(product);
+  };
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -65,16 +81,37 @@ const BestSaleCard = ({ product }) => {
 
         {/* ====== Action Buttons ====== */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[85%] flex justify-between items-center">
-          <button className="bg-white/90 hover:bg-white rounded-full p-2 transition">
-            <Heart size={18} className="text-gray-700" />
+          <button
+            onClick={(e) => {
+              e.stopPropagation(); // يمنع غلقها عند الضغط داخلها
+              handleWishlistToggle();
+            }}
+            className={`cursor-pointer bg-[var(--color-white)] p-2 rounded-full shadow-md transition ${
+              isInWishlistItem
+                ? "text-red-500 hover:text-red-600"
+                : "hover:text-[var(--color-primary)]"
+            }`}
+          >
+            <Heart
+              className={`w-4 h-4 ${isInWishlistItem ? "fill-current" : ""}`}
+            />
           </button>
 
-          <button className="flex-1 mx-2 bg-green-500 hover:bg-green-600 text-white font-medium rounded-full py-2 transition flex justify-center items-center gap-2">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              addToCart(product);
+            }}
+            className="flex-1 mx-2 bg-green-500 hover:bg-green-600 text-white font-medium rounded-full py-2 transition flex justify-center items-center gap-2"
+          >
             {t("add_to_cart")}
             <ShoppingBag size={16} />
           </button>
 
-          <button className="bg-white/90 hover:bg-white rounded-full p-2 transition">
+          <button
+            className="bg-white/90 hover:bg-white rounded-full p-2 transition"
+            onClick={() => navigate(`/product/${product.id}`)}
+          >
             <Eye size={18} className="text-gray-700" />
           </button>
         </div>
@@ -119,9 +156,7 @@ const BestSaleCard = ({ product }) => {
                 <p className="text-lg font-bold text-gray-900">
                   {String(timeLeft[unit]).padStart(2, "0")}
                 </p>
-                <p className="text-[10px] uppercase tracking-wide">
-                  {t(unit)}
-                </p>
+                <p className="text-[10px] uppercase tracking-wide">{t(unit)}</p>
               </div>
             ))}
           </div>

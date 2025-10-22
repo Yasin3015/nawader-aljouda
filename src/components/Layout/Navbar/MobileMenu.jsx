@@ -1,14 +1,17 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Button from "../../UI/Button";
 import arrowLeft from "../../../assets/icons/arrow-left.svg";
 import { useState, useEffect } from "react";
+import {useAuth} from '../../../contexts/AuthContext'
 
 const MobileMenu = ({ onClose, isOpen }) => {
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const [lang, setLang] = useState(i18n.language);
+  const { user, isAuthenticated, logout } = useAuth();
+  const navigate = useNavigate()
 
   // 🔄 تحديث اللغة عند أي تغيير في i18n
   useEffect(() => {
@@ -18,8 +21,8 @@ const MobileMenu = ({ onClose, isOpen }) => {
   const navLinks = [
     { path: "/", label: t("home") },
     { path: "/browse", label: t("browse") },
-    { path: "/about", label: t("about") },
-    { path: "/contact", label: t("contact") },
+    { path: "/about", label: t("about_us") },
+    { path: "/contact", label: t("contact_us") },
   ];
 
   return (
@@ -82,17 +85,22 @@ const MobileMenu = ({ onClose, isOpen }) => {
       </div>
 
       {/* Footer */}
-      <div className="px-10 flex justify-center gap-4 border-t border-gray-200 py-4">
+      {
+        !isAuthenticated()&&(
+          <div className="px-10 flex justify-center gap-4 border-t border-gray-200 py-4">
         <Button
           variant="outline"
           className="w-1/2 text-gray-700 border border-gray-300"
+          onClick = {()=>{navigate('/auth/signup'); onClose()}}
         >
           {t("signup")}
         </Button>
-        <Button variant="primary" className="w-1/2 bg-green-600 text-white">
+        <Button variant="primary" className="w-1/2 bg-green-600 text-white" onClick = {()=>{navigate('/auth/login'); onClose()}}>
           {t("login")}
         </Button>
       </div>
+        )
+      }
     </div>
   );
 };

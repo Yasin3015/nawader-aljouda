@@ -3,9 +3,11 @@ import { useTranslation } from "react-i18next";
 import Button from "../../UI//Button";
 import arrow from '../../../assets/icons/primaryArrow.svg'
 import heroImage from "../../../assets/images/mainCard.jpg"; 
+import { useNavigate } from "react-router-dom";
 
 const HeroMainCard = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate()
 
   return (
     <div className="relative rounded-[var(--radius-lg)] overflow-hidden h-[450px] md:h-[520px]">
@@ -38,6 +40,7 @@ const HeroMainCard = () => {
         </div>
 
         <Button
+          onClick={()=>navigate('/browse')}
           size="md"
           className="cursor-pointer mt-6 w-fit bg-[var(--color-white)] !text-[var(--color-primary)] rounded-full"
         >

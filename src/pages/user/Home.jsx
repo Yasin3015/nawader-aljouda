@@ -1,13 +1,13 @@
 import HeroSection from "../../components/Common/Hero/HeroSection";
 import ProductListSection from "../../components/Common/Products/ProductsHomeList";
-import BestSaleCard from "../../components/Common/Products/BestSaleCard";
-import Container from "../../components/UI/Container";
-import ProductCard from "../../components/Common/Products/ProductCard";
 import { products } from "../../FakeData/Products";
 import BestDeals from "../../components/Common/BestDeals";
 import GoalSection from "../../components/Common/GoalSection";
 import bg from '../../assets/images/goalbg.jpg'
 import PartnersCarousel from '../../components/Common/PartnersCarousel'
+import TestimonialSection from '../../components/about/TestimonialSection'
+import NewsLetterSection from '../../components/Common/NewsLetterSection'
+import RelatedProductsSection from '../../components/ProductInfo/RelatedProductsSection'
 
 const Home = () => {
   return (
@@ -15,8 +15,13 @@ const Home = () => {
       <HeroSection />
       <GoalSection bg={bg} />
       <ProductListSection />
-      <BestDeals />
+      <div className="container py-5">
+        <RelatedProductsSection />
+      </div>
+      <BestDeals products={products}/>
       <PartnersCarousel />
+      <TestimonialSection />
+      <NewsLetterSection />
     </div>
   )
 }

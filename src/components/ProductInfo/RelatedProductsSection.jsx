@@ -24,7 +24,7 @@ const RelatedProductsSection = ({ products = [] }) => {
     : relatedProducts.slice(0, 5); // أول 5 كروت فقط
 
   return (
-    <div className="mt-12">
+    <div className="mt-12 py-4">
       {/* ====== Header ====== */}
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold text-gray-900">

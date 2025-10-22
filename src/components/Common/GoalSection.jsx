@@ -7,33 +7,41 @@ export default function GoalSection({ bg }) {
 
   return (
     <section className="relative py-20 px-6">
+      {/* الخلفية */}
       <div
-        className="absolute !text-[var(--color-gray-9)] inset-0 bg-cover bg-center bg-no-repeat "
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${bg})` }}
       />
       <div className="absolute inset-0 bg-white/60" />
+
+      {/* المحتوى */}
       <div className="relative max-w-4xl mx-auto text-center z-10">
-        <h2 className="text-3xl md:text-4xl !text-[var(--color-gray-9)] font-bold mb-12">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 !text-[var(--color-gray-9)]">
           {t("goalSection.title")}
         </h2>
 
-        <div className="">
-          <p className="!text-3xl !text-[var(--color-gray-9)] font-medium md:text-2xl leading-relaxed mb-8">
-            "<span>{t("goalSection.quote.text1")}</span>
-            <span className="text-[var(--color-warning)] uppercase font-semibold">{t("goalSection.quote.text2")}</span>
-            <span>{t("goalSection.quote.text3")}</span>"
+        <div>
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed mb-8 !text-[var(--color-gray-9)]">
+            "
+            <span>{t("goalSection.quote.text1")}</span>
+            <span className="text-[var(--color-warning)] uppercase font-semibold">
+              {t("goalSection.quote.text2")}
+            </span>
+            <span>{t("goalSection.quote.text3")}</span>
+            "
           </p>
+
           <div className="flex flex-col items-center">
             <img
               src={ceo}
               alt={t("goalSection.quote.author.name")}
-              className="w-16 h-16 rounded-full object-cover bg-[var(--color-avatar-bg)] border-2 border-white mb-2"
+              className="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover bg-[var(--color-avatar-bg)] border-2 border-white mb-2"
             />
             <div className="text-center">
-              <p className="font-semibold text-lg text-dark">
+              <p className="font-semibold text-base sm:text-lg text-dark">
                 {t("goalSection.quote.author.name")}
               </p>
-              <p className="text-[var(--color-hard-primary)]">
+              <p className="text-[var(--color-hard-primary)] text-sm sm:text-base">
                 {t("goalSection.quote.author.position")},{" "}
                 {t("goalSection.quote.author.company")}
               </p>
