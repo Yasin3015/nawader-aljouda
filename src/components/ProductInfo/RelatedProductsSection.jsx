@@ -27,13 +27,13 @@ const RelatedProductsSection = ({ products = [] }) => {
     <div className="py-4">
       {/* ====== Header ====== */}
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-gray-900">
+        <h2 className="text-1xl md:text-2xl font-bold text-gray-900">
           {t('productInfo.relatedProducts')}
         </h2>
         {relatedProducts.length > 5 && (
           <button
             onClick={() => setShowAll(!showAll)}
-            className="flex items-center gap-1 text-gray-700 hover:text-gray-900 transition"
+            className="flex text-sm md:text-md items-center gap-1 text-gray-700 hover:text-gray-900 transition"
           >
             {showAll ? (
               <>

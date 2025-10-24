@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
-  const [lang, setLang] = useState(i18n.language || "en");
   const [isOpen, setIsOpen] = useState(false);
 
   const languages = [
     { code: "en", label: "English", dir: "ltr", font: "var(--font-en)" },
     { code: "ar", label: "العربية", dir: "rtl", font: "var(--font-ar)" },
   ];
+
+  // ✅ تحميل اللغة المحفوظة أول ما الصفحة تفتح
+  const [lang, setLang] = useState(() => {
+    return localStorage.getItem("appLanguage") || i18n.language || "en";
+  });
+
+  useEffect(() => {
+    const selectedLang = languages.find((l) => l.code === lang);
+    if (selectedLang) {
+      i18n.changeLanguage(selectedLang.code);
+      document.documentElement.dir = selectedLang.dir;
+      document.body.style.fontFamily = selectedLang.font;
+    }
+  }, [lang]);
 
   const handleLanguageChange = (selectedLang) => {
     setLang(selectedLang.code);
@@ -18,14 +31,17 @@ const LanguageSwitcher = () => {
     document.documentElement.dir = selectedLang.dir;
     document.body.style.fontFamily = selectedLang.font;
 
+    // ✅ حفظ اللغة المختارة في localStorage
+    localStorage.setItem("appLanguage", selectedLang.code);
+
     setIsOpen(false);
   };
 
   return (
-    <div className="relative inline-block w-23 bg-auto ">
+    <div className="relative inline-block w-23 bg-auto">
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center text-gray-300 justify-between borde px-3 py-2 cursor-pointer select-none"
+        className="flex items-center text-gray-300 justify-between px-3 py-2 cursor-pointer select-none"
       >
         <span className="text-sm font-medium text-gray-300">
           {languages.find((l) => l.code === lang)?.label}

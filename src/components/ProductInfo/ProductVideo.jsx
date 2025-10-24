@@ -36,7 +36,7 @@ const ProductVideo = ({ videoUrl, productName = "Product" }) => {
       </div>
 
       {/* Product Badges */}
-      <div className="space-y-3">
+      <div className="space-y-3 mt-4">
         <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
           <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
             <Check className="w-4 h-4 text-white" />
