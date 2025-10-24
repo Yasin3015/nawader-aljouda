@@ -31,7 +31,7 @@ const Dashboard = () => {
       >
         <Header collapsed={collapsed} searchOpen={searchOpen} setSearchOpen={setSearchOpen} setCollapsed={setCollapsed} notificationsOpen={notificationsOpen} setNotificationsOpen={setNotificationsOpen}/>
 
-        <main className={`flex-1 p-4 lg:p-8 !overflow-x-hidden ${collapsed?"!w-[calc(100vw-3rem)]":"!w-[calc(100vw-12.5rem)]"} transition-all`}>
+        <main className={`flex-1 p-4 lg:p-8 !overflow-x-hidden ${collapsed?"!w-[calc(100vw-3.2rem)]":"!w-[calc(100vw-12.5rem)]"} transition-all`}>
           {/* Banner */}
           <div className="bg-gradient-to-r from-gray-700 to-gray-900 rounded-lg p-6 lg:p-8 mb-6 text-white relative overflow-hidden">
             <div className="relative z-10">
