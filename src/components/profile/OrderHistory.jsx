@@ -21,6 +21,22 @@ const OrderHistory = ({
 
   const handlePageChange = (page) => setCurrentPage(page);
 
+  // ✅ هنا خريطة الكلاسات الثابتة
+  const spanClasses = {
+    1: 'col-span-1',
+    2: 'col-span-2',
+    3: 'col-span-3',
+    4: 'col-span-4',
+    5: 'col-span-5',
+    6: 'col-span-6',
+    7: 'col-span-7',
+    8: 'col-span-8',
+    9: 'col-span-9',
+    10: 'col-span-10',
+    11: 'col-span-11',
+    12: 'col-span-12',
+  };
+
   const renderCellContent = (order, column) => {
     switch (column.key) {
       case 'status':
@@ -28,7 +44,11 @@ const OrderHistory = ({
           <div className="flex items-center gap-2">
             <div
               className={`w-2 h-2 rounded-full ${
-                order.statusColor ? `bg-${order.statusColor}-500` : 'bg-green-500'
+                order.statusColor === 'green'
+                  ? 'bg-green-500'
+                  : order.statusColor === 'yellow'
+                  ? 'bg-yellow-500'
+                  : 'bg-gray-500'
               }`}
             ></div>
             <span className="text-sm text-gray-900 capitalize">{order.status}</span>
@@ -56,6 +76,7 @@ const OrderHistory = ({
           <h1 className="text-2xl font-bold text-gray-900">{title}</h1>
         </div>
       )}
+
       <div className="bg-white rounded-sm overflow-hidden">
         <div className="overflow-x-auto custom-scrollbar">
           <div style={{ minWidth: '700px' }}>
@@ -63,7 +84,7 @@ const OrderHistory = ({
             <div className="bg-gray-50 px-6 py-3">
               <div className="grid grid-cols-12 gap-4">
                 {columns.map((column) => (
-                  <div key={column.key} className={`col-span-${column.span}`}>
+                  <div key={column.key} className={spanClasses[column.span]}>
                     <span className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
                       {column.label}
                     </span>
@@ -82,7 +103,7 @@ const OrderHistory = ({
                   >
                     <div className="grid grid-cols-12 gap-4 items-center">
                       {columns.map((column) => (
-                        <div key={column.key} className={`col-span-${column.span}`}>
+                        <div key={column.key} className={spanClasses[column.span]}>
                           {renderCellContent(order, column)}
                         </div>
                       ))}
@@ -110,27 +131,22 @@ const OrderHistory = ({
         </div>
       )}
 
-      {/* CSS للـ Scrollbar المخصص */}
+      {/* Scrollbar Style */}
       <style jsx>{`
         .custom-scrollbar::-webkit-scrollbar {
           height: 6px;
         }
-        
         .custom-scrollbar::-webkit-scrollbar-track {
           background: #f1f1f1;
           border-radius: 10px;
         }
-        
         .custom-scrollbar::-webkit-scrollbar-thumb {
           background: #c1c1c1;
           border-radius: 10px;
         }
-        
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
           background: #a8a8a8;
         }
-
-        /* Firefox */
         .custom-scrollbar {
           scrollbar-width: thin;
           scrollbar-color: #c1c1c1 #f1f1f1;
