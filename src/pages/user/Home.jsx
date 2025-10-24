@@ -8,11 +8,12 @@ import PartnersCarousel from '../../components/Common/PartnersCarousel'
 import TestimonialSection from '../../components/about/TestimonialSection'
 import NewsLetterSection from '../../components/Common/NewsLetterSection'
 import RelatedProductsSection from '../../components/ProductInfo/RelatedProductsSection'
+import Dashboard from "../../components/Admin Dashboard/Dashboard";
 
 const Home = () => {
   return (
     <div>
-      <HeroSection />
+      {/* <HeroSection />
       <GoalSection bg={bg} />
       <ProductListSection />
       <div className="container">
@@ -21,7 +22,9 @@ const Home = () => {
       <BestDeals products={products}/>
       <PartnersCarousel />
       <TestimonialSection />
-      <NewsLetterSection />
+      <NewsLetterSection /> */}
+
+      <Dashboard />
     </div>
   )
 }
