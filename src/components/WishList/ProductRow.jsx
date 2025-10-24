@@ -21,13 +21,13 @@ const ProductRow = ({ product, onRemove, onAddToCart }) => (
       />
     </td>
     <td className="py-4 px-4 text-center">
-      <StockBadge inStock={product.inStock} />
+      <StockBadge inStock={product.flag} />
     </td>
     <td className="py-4 px-4">
       <div className="flex items-center justify-center gap-3">
         <AddToCartButton 
-          disabled={!product.inStock}
-          onClick={() => onAddToCart(product.id)}
+          disabled={!product.flag}
+          product={product}
         />
         <RemoveButton onClick={() => onRemove(product.id)} />
       </div>

@@ -10,11 +10,11 @@ const OrderDetails = ({ orderData, onBack }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-gray-50 py-6">
+    <div className="border border-gray-200 rounded-md">
       <div className="w-full">
         {/* Header */}
-        <div className="mb-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-3">
+        <div className="p-4 border-b border-b-gray-200">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-0 gap-3">
             <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">
               {t('orderDetails.title')}
             </h1>
@@ -28,7 +28,7 @@ const OrderDetails = ({ orderData, onBack }) => {
               </span>
             </button>
           </div>
-          <p className="text-gray-600 text-base lg:text-lg">
+          <p className="text-gray-600 text-base lg:text-md">
             {t('orderDetails.subtitle', { 
               count: orderData.items?.length || 0, 
               date: orderData.date 
@@ -37,11 +37,22 @@ const OrderDetails = ({ orderData, onBack }) => {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6 mb-6">
+        <div className="grid grid-cols-1 p-4 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6 mb-6">
           {/* Billing Information */}
-          <BillingInfo customer={orderData.customer} />
-          
-          {/* Order Summary */}
+          <BillingInfo 
+            billing={{
+              name: "Dainne Russell",
+              address: "4140 Parker Rd. Allentown, New Mexico 31134",
+              email: "dainne.ressell@gmail.com",
+              phone: "(671) 555–0110",
+            }}
+            shipping={{
+              name: "Dainne Russell",
+              address: "4140 Parker Rd. Allentown, New Mexico 31134",
+              email: "dainne.ressell@gmail.com",
+              phone: "(671) 555–0110",
+            }}
+          />
           <OrderSummary 
             orderId={orderData.id}
             paymentMethod={orderData.payment}

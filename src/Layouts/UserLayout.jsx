@@ -5,6 +5,7 @@ import ShoppingCart from "../components/UI/ShoppingCart";
 import { CartProvider } from "../contexts/CartContext";
 import { WishlistProvider } from "../contexts/WishlistContext";
 import { ToastProvider } from "../components/UI/ToastProvider";
+import ScrollToTop from "../components/Common/ScrollToTop";
 
 const UserLayout = () => {
 
@@ -12,6 +13,7 @@ const UserLayout = () => {
     <ToastProvider>
       <CartProvider>
         <WishlistProvider>
+          <ScrollToTop />
           <div className="min-h-screen">
             <ResponsiveNavbar />
             <Outlet />

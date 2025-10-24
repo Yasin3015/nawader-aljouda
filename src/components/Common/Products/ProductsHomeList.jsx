@@ -31,7 +31,7 @@ const ProductListSection = () => {
   },[filteredProducts])
 
   return (
-    <section className="py-10 md:py-16 bg-[var(--color-white)] text-center !h-full">
+    <section className="py-10 md:py-10 bg-[var(--color-white)] text-center !h-full">
       {/* Title */}
       <h2 className="text-2xl md:text-3xl font-semibold text-[var(--color-dark)] mb-3">
         {t("selectExplore") || "Select & Explore"}

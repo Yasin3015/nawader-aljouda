@@ -119,9 +119,9 @@ const BestSaleCard = ({ product }) => {
 
       {/* ====== Product Info ====== */}
       <div className="p-4 flex flex-col items-center text-center">
-        <h3 className="text-green-700 text-sm font-semibold">{name}</h3>
+        <h3 onClick={()=>{navigate(`/product/${product.id}`)}} className="cursor-pointer text-green-700 text-xl font-semibold">{name}</h3>
         <div className="mt-1 flex items-center gap-2">
-          <span className="text-lg font-bold text-gray-900">${price}</span>
+          <span className="text-3xl font-bold text-gray-900">${price}</span>
           {oldPrice && (
             <span className="text-gray-400 line-through text-sm">
               ${oldPrice}
@@ -148,12 +148,12 @@ const BestSaleCard = ({ product }) => {
         </div>
 
         {/* Countdown */}
-        <div className="mt-3 text-gray-600 text-xs">
-          <p className="font-medium mb-1">{t("hurry_up_offer_ends_in")}:</p>
-          <div className="flex justify-center gap-4">
+        <div className="mt-3 text-gray-600 text-md">
+          <p className="!text-lg font-medium mb-1">{t("hurry_up_offer_ends_in")}:</p>
+          <div className="!text-xl flex justify-center gap-4">
             {["days", "hours", "mins", "secs"].map((unit) => (
               <div key={unit} className="text-center">
-                <p className="text-lg font-bold text-gray-900">
+                <p className="!text-3xl font-bold text-gray-900">
                   {String(timeLeft[unit]).padStart(2, "0")}
                 </p>
                 <p className="text-[10px] uppercase tracking-wide">{t(unit)}</p>

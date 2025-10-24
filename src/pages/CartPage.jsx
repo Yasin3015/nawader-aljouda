@@ -54,38 +54,41 @@ const CartPage = () => {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              <div className="rounded-sm border-1 border-gray-200 overflow-hidden">
-                <table className="min-w-full border-collapse">
-                  <thead className=" border-b border-gray-200">
-                    <tr>
-                      <th className="text-center py-3 px-4 text-sm font-semibold text-gray-700 uppercase tracking-wide w-5/12">
-                        Product
-                      </th>
-                      <th className="text-center py-3 px-4 text-sm font-semibold text-gray-700 uppercase tracking-wide w-2/12">
-                        Price
-                      </th>
-                      <th className="text-center py-3 px-4 text-sm font-semibold text-gray-700 uppercase tracking-wide w-3/12">
-                        Quantity
-                      </th>
-                      <th className="text-center py-3 px-4 text-sm font-semibold text-gray-700 uppercase tracking-wide w-2/12">
-                        Subtotal
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200">
-                    {items.map((item) => (
-                      <CartItem key={item.id} item={item} asRow />
-                    ))}
-                  </tbody>
-                </table>
-                <div className="p-4 text-center">
-                  <Link
-                    to="/browse"
-                    className="inline-flex items-center gap-2 rounded-full bg-[var(--color-gray-1)] text-[var(--color-gray-7)] py-3 px-5 hover:text-gray-900 transition-colors"
-                  >
-                    <ArrowLeft className="w-4 h-4" />
-                    Return to shop
-                  </Link>
+              {/* 👇 ضفت overflow-x-auto هنا */}
+              <div className="overflow-x-auto">
+                <div className="rounded-sm border-1 border-gray-200 overflow-hidden min-w-[600px]">
+                  <table className="min-w-full border-collapse">
+                    <thead className="border-b border-gray-200">
+                      <tr>
+                        <th className="text-center py-3 px-4 text-sm font-semibold text-gray-700 uppercase tracking-wide w-5/12">
+                          Product
+                        </th>
+                        <th className="text-center py-3 px-4 text-sm font-semibold text-gray-700 uppercase tracking-wide w-2/12">
+                          Price
+                        </th>
+                        <th className="text-center py-3 px-4 text-sm font-semibold text-gray-700 uppercase tracking-wide w-3/12">
+                          Quantity
+                        </th>
+                        <th className="text-center py-3 px-4 text-sm font-semibold text-gray-700 uppercase tracking-wide w-2/12">
+                          Subtotal
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200">
+                      {items.map((item) => (
+                        <CartItem key={item.id} item={item} asRow />
+                      ))}
+                    </tbody>
+                  </table>
+                  <div className="p-4 text-center">
+                    <Link
+                      to="/browse"
+                      className="inline-flex items-center gap-2 rounded-full bg-[var(--color-gray-1)] text-[var(--color-gray-7)] py-3 px-5 hover:text-gray-900 transition-colors"
+                    >
+                      <ArrowLeft className="w-4 h-4" />
+                      Return to shop
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

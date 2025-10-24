@@ -22,7 +22,7 @@ const ProfileInfo = ({ user, onEditProfile }) => {
   };
 
   return (
-    <div className="flex justify-between items-center gap-6">
+    <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
       <div className=" border border-gray-200 p-6 flex-1 rounded-sm">
         <div className="flex flex-col items-center text-center">
           {/* Profile Image */}
@@ -54,7 +54,7 @@ const ProfileInfo = ({ user, onEditProfile }) => {
       <div className="lg:col-span-3">
         <BillingAddress
           address={addressData}
-          onEditAddress={handleEditAddress}
+          onEditAddress={onEditProfile}
         />
       </div>
     </div>

@@ -14,7 +14,7 @@ const Sidebar = ({ activeTab = 'dashboard', onTabChange }) => {
     { id: 'dashboard', label: t('profile.sidebar.dashboard'), icon: LayoutDashboard },
     { id: 'order-history', label: t('profile.sidebar.orderHistory'), icon: Clock },
     { id: 'settings', label: t('profile.sidebar.settings'), icon: Settings },
-    { id: 'deleteAccount', label: t('profile.sidebar.deleteAccount'), icon: Trash }
+    { id: 'delete-account', label: t('profile.sidebar.deleteAccount'), icon: Trash }
   ];
 
   const handleItemClick = (item) => {

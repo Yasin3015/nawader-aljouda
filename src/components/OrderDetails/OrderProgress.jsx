@@ -1,74 +1,79 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { Check } from 'lucide-react';
 
-const OrderProgress = ({ currentStep }) => {
-  const { t } = useTranslation();
-
+const OrderProgress = ({ currentStep = 2 }) => {
   const steps = [
-    { id: 1, label: t('orderDetails.progress.orderReview') },
-    { id: 2, label: t('orderDetails.progress.inProgress') },
-    { id: 3, label: t('orderDetails.progress.onTheWay') },
-    { id: 4, label: t('orderDetails.progress.delivered') }
+    { id: 1, label: 'Order received' },
+    { id: 2, label: 'Processing' },
+    { id: 3, label: 'On the way' },
+    { id: 4, label: 'Delivered' }
   ];
 
   const getStepStatus = (stepId) => {
-    if (stepId < currentStep) return 'completed';
-    if (stepId === currentStep) return 'current';
+    if (stepId <= currentStep) return 'completed';
     return 'pending';
   };
 
-  const getStepIcon = (stepId, status) => {
-    if (status === 'completed') {
-      return <Check className="w-4 h-4 text-white" />;
-    }
-    return <span className="text-sm font-medium">{stepId.toString().padStart(2, '0')}</span>;
-  };
-
   return (
-    <div className="bg-white rounded-lg shadow-sm p-6">
-      <div className="flex items-center justify-between">
-        {steps.map((step, index) => {
-          const status = getStepStatus(step.id);
-          const isLast = index === steps.length - 1;
-          
-          return (
-            <React.Fragment key={step.id}>
-              {/* Step Circle */}
-              <div className="flex flex-col items-center">
-                <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                    status === 'completed' || status === 'current'
-                      ? 'bg-green-600'
-                      : 'bg-gray-200 border-2 border-dashed border-gray-300'
-                  }`}
-                >
-                  {getStepIcon(step.id, status)}
+    <div className="py-3">
+      <div className="py-8 max-w-4xl mx-auto">
+        <div className="flex items-center justify-between">
+          {steps.map((step, index) => {
+            const status = getStepStatus(step.id);
+            const isLast = index === steps.length - 1;
+            
+            return (
+              <React.Fragment key={step.id}>
+                <div className="flex flex-col items-center relative">
+                  <div
+                    className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${
+                      status === 'completed'
+                        ? 'bg-green-500 border-2 border-green-500'
+                        : 'bg-white border-2 border-dashed border-gray-300'
+                    }`}
+                  >
+                    {status === 'completed' ? (
+                      <Check className="w-5 h-5 text-white" strokeWidth={3} />
+                    ) : (
+                      <span className="text-sm font-semibold text-gray-400">
+                        {step.id.toString().padStart(2, '0')}
+                      </span>
+                    )}
+                  </div>
+                  
+                  {/* Label */}
+                  <span className={`text-xs mt-3 whitespace-nowrap ${
+                    status === 'pending' ? 'text-gray-400' : 'text-gray-700'
+                  }`}>
+                    {step.label}
+                  </span>
                 </div>
-                <span className={`text-sm mt-2 text-center ${
-                  status === 'completed' || status === 'current'
-                    ? 'text-gray-900'
-                    : 'text-gray-500'
-                }`}>
-                  {step.label}
-                </span>
-              </div>
-              
-              {/* Connecting Line */}
-              {!isLast && (
-                <div className={`flex-1 h-0.5 mx-4 ${
-                  step.id < currentStep
-                    ? 'bg-green-600'
-                    : 'bg-gray-200 border-t border-dashed border-gray-300'
-                }`} />
-              )}
-            </React.Fragment>
-          );
-        })}
+                
+                {/* Connecting Line */}
+                {!isLast && (
+                  <div className="flex-1 -mt-8 relative" style={{ marginLeft: '-6px', marginRight: '-6px' }}>
+                    {step.id < currentStep ? (
+                      // Fully completed line
+                      <div className="h-1 bg-green-500" />
+                    ) : step.id === currentStep ? (
+                      // Half completed line (current step)
+                      <div className="h-1 relative">
+                        <div className="absolute inset-0 border-t-2 border-dashed border-gray-300" />
+                        <div className="absolute top-0 left-0 h-1 bg-green-500" style={{ width: '50%' }} />
+                      </div>
+                    ) : (
+                      // Not started line
+                      <div className="h-1 border-t-2 border-dashed border-gray-300" />
+                    )}
+                  </div>
+                )}
+              </React.Fragment>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
 };
 
 export default OrderProgress;
-

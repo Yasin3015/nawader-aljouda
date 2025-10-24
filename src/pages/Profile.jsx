@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/profile/Sidebar';
 import ProfileInfo from '../components/profile/ProfileInfo';
-import BillingAddress from '../components/profile/BillingAddress';
 import RecentOrders from '../components/profile/RecentOrders';
 import OrderHistory from '../components/profile/OrderHistory';
 import OrderDetails from '../components/OrderDetails/OrderDetails';
-import SettingsSidebar from '../components/Settings/SettingsSidebar';
 import AccountSettings from '../components/Settings/AccountSettings';
 import BillingAddressSettings from '../components/Settings/BillingAddressSettings';
 import ChangePassword from '../components/Settings/ChangePassword';
-import WishlistTable from '../components/WishList/WishlistTable';
-import WishlistItem from '../components/WishList/WishlistItem';
 import { useWishlist } from '../contexts/WishlistContext';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { allOrders } from '../FakeData/AllOrders';
+import DeleteAccount from '../components/Settings/DeleteAccount';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -22,18 +19,11 @@ const Profile = () => {
   const { items: wishlistItems, totalItems: wishlistTotalItems, clearWishlist } = useWishlist();
   const { t } = useTranslation();
   const navigate = useNavigate()
-
-  // Sample user data
   const userData = {
     name: 'Dianne Russell',
     role: 'Customer',
     avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
   };
-
-  // Sample address data
-  
-
-  // Sample orders data
   const ordersData = [
     {
       id: '#738',
@@ -79,7 +69,6 @@ const Profile = () => {
     }
   ];
 
-  // Sample detailed order data for OrderDetails component
   const sampleOrderDetails = {
     id: '#4152',
     date: '8 سبتمبر 2020',
@@ -113,16 +102,13 @@ const Profile = () => {
       }
     ]
   };
-
-  // Event handlers
   const handleTabChange = (tabId) => {
     setActiveTab(tabId);
     console.log('Tab changed to:', tabId);
   };
 
   const handleEditProfile = () => {
-    console.log('Edit profile clicked');
-    // Handle edit profile logic
+    setActiveTab('settings');
   };
 
 
@@ -177,61 +163,9 @@ const Profile = () => {
             <p className="text-gray-500">No order selected</p>
           </div>
         );
-      case 'wishlist':
+      case 'delete-account':
         return (
-          <div className="space-y-6">
-            <div className="bg-white rounded-lg shadow-sm p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-semibold text-gray-900">
-                  {t('wishlist.title')}
-                </h2>
-                <div className="flex items-center gap-4">
-                  <span className="text-sm text-gray-500">
-                    {wishlistTotalItems} {t('wishlist.totalItems')}
-                  </span>
-                  {wishlistTotalItems > 0 && (
-                    <button
-                      onClick={clearWishlist}
-                      className="text-red-600 hover:text-red-700 text-sm font-medium"
-                    >
-                      {t('wishlist.clearWishlist')}
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              {wishlistItems.length === 0 ? (
-                <div className="text-center py-12">
-                  <Heart className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">
-                    {t('wishlist.empty')}
-                  </h3>
-                  <p className="text-gray-500 mb-6">
-                    Add items to your wishlist by clicking the heart icon on any product.
-                  </p>
-                  <button
-                    onClick={() => navigate('/browse')}
-                    className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
-                  >
-                    Browse Products
-                  </button>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {wishlistItems.map((item) => (
-                    <WishlistItem key={item.id} item={item} />
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        );
-      case 'shopping-cart':
-        return (
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Shopping Cart</h2>
-            <p className="text-gray-500">Your cart items will appear here.</p>
-          </div>
+          <DeleteAccount />
         );
       case 'settings':
         return (
@@ -239,13 +173,6 @@ const Profile = () => {
             <AccountSettings />
             <BillingAddressSettings />
             <ChangePassword />
-          </div>
-        );
-      case 'logout':
-        return (
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Logout</h2>
-            <p className="text-gray-500">Are you sure you want to logout?</p>
           </div>
         );
       default:

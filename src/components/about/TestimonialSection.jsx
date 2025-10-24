@@ -5,6 +5,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { useTranslation } from "react-i18next";
+import person from '../../assets/images/testm.jpg'
 
 const TestimonialSection = () => {
   const { t, i18n } = useTranslation();
@@ -31,10 +32,10 @@ const TestimonialSection = () => {
   };
 
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4" dir={isRTL ? "rtl" : "ltr"}>
+    <section className="py-8 bg-white">
+      <div className="container" dir={isRTL ? "rtl" : "ltr"}>
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             {t("about.testimonials.title")}
           </h2>
@@ -101,7 +102,7 @@ const TestimonialCard = ({ testimonial, renderStars, isRTL }) => {
       </blockquote>
 
       {/* Read More Button */}
-      {testimonial.quote.split(" ").length > 15 && (
+
         <button
           onClick={() => setExpanded(!expanded)}
           className="text-green-600 text-sm font-semibold hover:underline mb-4 self-start"
@@ -114,7 +115,6 @@ const TestimonialCard = ({ testimonial, renderStars, isRTL }) => {
             ? "قراءة المزيد"
             : "Read more"}
         </button>
-      )}
 
       {/* Rating */}
       <div
@@ -127,17 +127,15 @@ const TestimonialCard = ({ testimonial, renderStars, isRTL }) => {
 
       {/* Customer Info */}
       <div
-        className={`border-t border-gray-200 pt-4 flex items-center gap-4 ${
-          isRTL ? "flex-row-reverse text-right" : ""
-        }`}
+        className={`border-t border-gray-200 pt-4 flex items-center gap-4 `}
       >
         <img
-          src={testimonial.avatar}
+          src={testimonial.avatar?testimonial.avatar:person}
           alt={testimonial.name}
           className="w-12 h-12 rounded-full object-cover"
         />
         <div>
-          <h4 className="font-bold text-gray-900 text-lg">
+          <h4 className="text-gray-900 text-md truncate whitespace-nowrap overflow-hidden max-w-[200px]">
             {testimonial.name}
           </h4>
           <p className="text-gray-600">{testimonial.status}</p>

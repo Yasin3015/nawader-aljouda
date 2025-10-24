@@ -12,6 +12,7 @@ import { useAuth } from "../../../contexts/AuthContext";
 import { useTranslation } from "react-i18next";
 import UserPages from "./UserPages";
 import SearchComponent from "../../UI/SearchComponent";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const MobileNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -72,7 +73,6 @@ const MobileNav = () => {
               />
             )}
 
-            {/* Search icon */}
             <img
               src={search}
               alt="Search"
@@ -81,7 +81,6 @@ const MobileNav = () => {
             />
           </div>
 
-          {/* 🔹 Logo is now a link */}
           <Link to="/" className="flex items-center">
             <img
               src={logo}
@@ -89,8 +88,6 @@ const MobileNav = () => {
               className="h-8 object-contain hover:scale-105 transition-transform duration-300"
             />
           </Link>
-
-          {/* 🔹 Menu button */}
           <button
             onClick={handleMenuToggle}
             className="transition-transform hover:scale-110 duration-200"
@@ -103,20 +100,17 @@ const MobileNav = () => {
       {/* 🔹 Bottom Bar */}
       <div className="lg:hidden bg-black text-gray-300">
         <Container className="flex items-center justify-between py-2 text-sm">
-          <span className="capitalize">{currentPage}</span>
-          <a href="tel:+201234567890" className="text-gray-400 flex items-center gap-1">
+          <LanguageSwitcher />
+          <Link href="tel:+201234567890" className="text-gray-400 flex items-center gap-1">
             <img src={phone} alt="Phone" className="inline w-4 h-4" />
             <span className="text-white text-md">+20 123 456 7890</span>
-          </a>
+          </Link>
         </Container>
       </div>
-
-      {/* 🔹 Animated Mobile Menu */}
       {isMenuOpen && (
         <>
-          {/* خلفية شفافة */}
           <div
-            className="fixed inset-0 bg-black bg-opacity-40 z-40"
+            className="fixed inset-0 bg-black/70 bg-opacity-40 z-40"
             onClick={() => setIsMenuOpen(false)}
           ></div>
 

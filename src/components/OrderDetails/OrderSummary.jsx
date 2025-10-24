@@ -7,58 +7,57 @@ const OrderSummary = ({
   total, 
   discount, 
   shipping, 
-  grandTotal 
+  grandTotal,
 }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-6">
-      <div className="space-y-6">
+    <div className="border border-gray-200 col-span-1 rounded-sm">
+      <div className="">
         {/* Order ID and Payment Method */}
-        <div className="space-y-4">
-          <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center p-4 border-b !border-b-gray-200">
+          <div className="flex flex-col text-sm">
             <span className="text-gray-600">
               {t('orderDetails.orderSummary.orderId')}
             </span>
-            <span className="text-gray-900 font-medium">{orderId}</span>
+            <span className="text-gray-900">{orderId}</span>
           </div>
-          
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col text-sm gap-0">
             <span className="text-gray-600">
               {t('orderDetails.orderSummary.paymentMethod')}
             </span>
-            <span className="text-gray-900 font-medium">{paymentMethod}</span>
+            <span className="text-gray-900">{paymentMethod}</span>
           </div>
         </div>
 
         {/* Order Totals */}
-        <div className="border-t pt-4 space-y-3">
-          <div className="flex justify-between items-center">
+        <div className="p-4 text-md space-y-2">
+          <div className="flex justify-between border-b border-b-gray-200 items-center">
             <span className="text-gray-600">
               {t('orderDetails.orderSummary.totalOrder')}
             </span>
-            <span className="text-gray-900 font-medium">${total}</span>
+            <span className="text-gray-900 ">${total}</span>
           </div>
           
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center border-b border-b-gray-200">
             <span className="text-gray-600">
               {t('orderDetails.orderSummary.discount')}
             </span>
-            <span className="text-gray-900 font-medium">{discount}</span>
+            <span className="text-gray-900 ">{discount}</span>
           </div>
           
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center border-b border-b-gray-200">
             <span className="text-gray-600">
               {t('orderDetails.orderSummary.shipping')}
             </span>
-            <span className="text-gray-900 font-medium">{shipping}</span>
+            <span className="text-gray-900 ">{shipping}</span>
           </div>
         </div>
 
         {/* Grand Total */}
-        <div className="border-t pt-4">
+        <div className="p-4">
           <div className="flex justify-between items-center">
-            <span className="text-gray-600 font-medium">
+            <span className="text-gray-600 ">
               {t('orderDetails.orderSummary.grandTotal')}
             </span>
             <span className="text-green-600 font-bold text-lg">${grandTotal}</span>

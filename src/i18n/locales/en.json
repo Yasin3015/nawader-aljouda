@@ -52,7 +52,7 @@
   "moneyBack": "Money-Back Guarantee",
   "moneyBackDesc": "30 Days Money Back Guarantee",
   "footer": {
-    "brandName": "EcoMarket",
+    "brandName": "Nawader AlJouda",
     "description": "We provide high-quality products at affordable prices. Your satisfaction is our priority.",
     "contactPhone": "Call us at +1 234 567 890",
     "contactEmail": "contact@ecomarket.com",
@@ -278,6 +278,9 @@
       "email": "Email",
       "phone": "Phone"
     },
+    "shippingAddress":{
+      "title":"Shipping Address"
+    },
     "orderSummary": {
       "orderId": "Order ID",
       "paymentMethod": "Payment Method",
@@ -339,6 +342,28 @@
     "common": {
       "save": "Save",
       "saving": "Saving..."
+    },
+    "deleteAccount": {
+      "title": "Delete Account",
+      "warningTitle": "Warning: This action cannot be undone!",
+      "warningMessage": "Deleting your account will result in permanent loss of all your data.",
+      "consequences": {
+        "title": "When you delete your account:",
+        "point1": "All your personal data will be permanently deleted",
+        "point2": "Order history and purchases will be removed",
+        "point3": "Wishlist and shopping cart will be cleared",
+        "point4": "You won't be able to recover your account"
+      },
+      "button": "Delete Account Permanently",
+      "modal": {
+        "title": "Are you sure?",
+        "message": "This action will permanently delete your account and all your data and cannot be undone.",
+        "warning": "You won't be able to access your account or data after deletion!",
+        "confirmLabel": "To confirm, type",
+        "cancel": "Cancel",
+        "confirm": "Delete Account",
+        "deleting": "Deleting..."
+      }
     }
   },
   "productInfo": {
@@ -406,6 +431,20 @@
     "description": "This is sample text that can be replaced in the same space. This text was generated from an Arabic text generator",
     "button": "Subscribe",
     "placeholder": "Enter your email address here"
+  },
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "email": "Email",
+      "password": "Password",
+      "remember": "Remember me",
+      "forgotPassword": "Forget Password?",
+      "submit": "Login",
+      "loading": "Logging in...",
+      "noAccount": "Don't have an account?",
+      "register": "Register",
+      "error": "Something went wrong, please try again"
+    }
   },
   "contact": {
     "info": {

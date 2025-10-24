@@ -56,18 +56,55 @@
   [dir="rtl"] {
     font-family: var(--font-ar);
   }
+
   /* في ملف CSS منفصل */
-@keyframes infinite-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  @keyframes infinite-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .animate-infinite-scroll {
+    animation: infinite-scroll 20s linear infinite;
+    display: flex;
+    width: max-content;
+  }
+
+  /* 🔹 Hide Scrollbar Class */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  @keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes infinite-scroll-rtl {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50%);
+  }
 }
 
 .animate-infinite-scroll {
-  animation: infinite-scroll 20s linear infinite;
-  display: flex;
-  width: max-content;
+  animation: infinite-scroll 25s linear infinite;
 }
+
+.animate-infinite-scroll-rtl {
+  animation: infinite-scroll-rtl 25s linear infinite;
 }
+
+}
+
 button {
   @apply cursor-pointer;
 }
@@ -96,4 +133,30 @@ button {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+
+/* 🎨 Custom Scrollbar Styling - خارج الـ layer */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #00B207 #F5F5F5;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--color-green-gray-5);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+  border: 0px solid #F5F5F5;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #2C742F;
 }

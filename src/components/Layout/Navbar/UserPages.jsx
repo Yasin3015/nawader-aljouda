@@ -17,7 +17,6 @@ const UserPages = ({
 
   return (
     <>
-      {/* Desktop View - من 787px وفوق */}
       <div className="hidden md:flex !flex-1 !justify-end items-center gap-4">
         <Link
           to="/wishlist"
@@ -38,8 +37,6 @@ const UserPages = ({
             />
           </svg>
         </Link>
-
-        {/* زر الـ Cart */}
         <div
           className="cart-btn flex items-center box-border cursor-pointer p-0 gap-2 justify-end hover:opacity-80 transition"
           onClick={toggleCart}
@@ -61,8 +58,6 @@ const UserPages = ({
             </p>
           </div>
         </div>
-
-        {/* Avatar مع القائمة المنسدلة - Desktop */}
         <div
           className="relative"
           onMouseEnter={() => setShowProfileMenu(true)}
@@ -132,8 +127,6 @@ const UserPages = ({
           )}
         </div>
       </div>
-
-      {/* Mobile View - تحت 786px */}
       <div className="md:hidden relative">
         <button
           className="flex items-center justify-center w-10 h-10 bg-[var(--color-primary)] text-white rounded-full hover:bg-opacity-90 transition font-medium"
@@ -142,7 +135,6 @@ const UserPages = ({
           {user?.name?.charAt(0)?.toUpperCase() || "U"}
         </button>
 
-        {/* القائمة المنسدلة - Mobile */}
         {showProfileMenu && (
           <div
             className={`absolute ${
@@ -224,8 +216,6 @@ const UserPages = ({
               </svg>
               <span className="text-sm">{t("profile") || "الملف الشخصي"}</span>
             </Link>
-
-            {/* Logout Button */}
             <button
               onClick={handleLogout}
               className="flex items-center gap-3 w-full px-4 py-3 hover:bg-red-50 transition text-red-600 border-t border-gray-100 mt-1"

@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Button from "../../components/UI/Button";
 import { loginSchema } from "../../validation/authSchemas";
-import { login, seedMockUser } from "../../services/authApi";
 import { useAuth } from "../../contexts/AuthContext";
 import FormInput from "../../components/auth/FormInput";
 import PasswordInput from "../../components/auth/PasswordInput";
 import SocialLogin from "../../components/auth/SocialLogin";
 import ErrorMessage from "../../components/auth/ErrorMessage";
 
-seedMockUser();
-
 const Login = () => {
+  const { t } = useTranslation();
   const [form, setForm] = useState({ email: "", password: "", remember: false });
   const [errors, setErrors] = useState({});
   const [apiError, setApiError] = useState("");
@@ -23,7 +22,6 @@ const Login = () => {
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setForm((s) => ({ ...s, [name]: type === "checkbox" ? checked : value }));
-    // امسح الخطأ الخاص بالحقل لما اليوزر يكتب
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
     }
@@ -34,7 +32,6 @@ const Login = () => {
     setErrors({});
     setApiError("");
 
-    // التحقق من صحة البيانات
     const parsed = loginSchema.safeParse(form);
     if (!parsed.success) {
       const fieldErrors = {};
@@ -47,28 +44,38 @@ const Login = () => {
     }
 
     setLoading(true);
-    try {
-      // استدعاء API تسجيل الدخول
-      const response = await login({ 
-        email: form.email, 
-        password: form.password 
-      });
+    
+    // Simulate API delay
+    setTimeout(() => {
+      try {
+        // بيانات وهمية للتجربة
+        const mockUser = {
+          id: 1,
+          name: "أحمد محمد",
+          email: form.email,
+          phone: "01234567890",
+          avatar: "https://ui-avatars.com/api/?name=Ahmed+Mohamed&background=10b981&color=fff",
+          role: "user"
+        };
 
-      // حفظ بيانات المستخدم في الـ Context
-      authLogin(response.user, response.token);
+        // حفظ بيانات المستخدم في الـ Context
+        authLogin(mockUser);
 
-      // التوجيه للصفحة الرئيسية أو الداشبورد
-      navigate('/');
-    } catch (err) {
-      setApiError(err.message || "Something went wrong");
-    } finally {
-      setLoading(false);
-    }
+        // التوجيه للصفحة الرئيسية
+        navigate('/');
+      } catch (err) {
+        setApiError(err.message || t('auth.login.error'));
+      } finally {
+        setLoading(false);
+      }
+    }, 1000);
   };
 
   return (
     <div className="w-full max-w-md mx-auto">
-      <h2 className="text-2xl font-semibold text-center mb-6">Sign In</h2>
+      <h2 className="text-2xl font-semibold text-center mb-6">
+        {t('auth.login.title')}
+      </h2>
       
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* رسالة خطأ عامة */}
@@ -78,7 +85,7 @@ const Login = () => {
         <FormInput
           name="email"
           type="email"
-          placeholder="Email"
+          placeholder={t('auth.login.email')}
           value={form.email}
           onChange={handleChange}
           error={errors.email}
@@ -87,7 +94,7 @@ const Login = () => {
         {/* حقل كلمة المرور */}
         <PasswordInput
           name="password"
-          placeholder="Password"
+          placeholder={t('auth.login.password')}
           value={form.password}
           onChange={handleChange}
           error={errors.password}
@@ -103,19 +110,19 @@ const Login = () => {
               onChange={handleChange}
               className="cursor-pointer"
             />
-            <span>Remember me</span>
+            <span>{t('auth.login.remember')}</span>
           </label>
           <Link 
             to="/auth/forgot-password" 
-            className="text-[var(--color-gray-6)] hover:text-[var(--color-primary)] transition"
+            className="text-gray-600 hover:text-green-600 transition"
           >
-            Forget Password?
+            {t('auth.login.forgotPassword')}
           </Link>
         </div>
 
         {/* زر تسجيل الدخول */}
         <Button type="submit" fullWidth disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
+          {loading ? t('auth.login.loading') : t('auth.login.submit')}
         </Button>
 
         {/* تسجيل الدخول بالسوشيال ميديا */}
@@ -123,12 +130,12 @@ const Login = () => {
 
         {/* رابط التسجيل */}
         <p className="text-center text-sm mt-4">
-          Don't have an account?{" "}
+          {t('auth.login.noAccount')}{" "}
           <Link 
             to="/auth/signup" 
-            className="text-[var(--color-primary)] font-medium hover:underline"
+            className="text-green-600 font-medium hover:underline"
           >
-            Register
+            {t('auth.login.register')}
           </Link>
         </p>
       </form>

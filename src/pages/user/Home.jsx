@@ -15,7 +15,7 @@ const Home = () => {
       <HeroSection />
       <GoalSection bg={bg} />
       <ProductListSection />
-      <div className="container py-5">
+      <div className="container">
         <RelatedProductsSection />
       </div>
       <BestDeals products={products}/>

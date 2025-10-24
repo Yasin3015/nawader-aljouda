@@ -49,14 +49,11 @@ const NavbarDesktop = () => {
         </div>
         
         <div className="flex !justify-end gap-4">
-          {/* إذا المستخدم مسجل دخول */}
           {isAuthenticated() ? (
             <>
-              {/* زر الـ Wishlist */}
               <UserPages toggleCart={toggleCart} totalItems={totalItems} totalPrice={totalPrice} user={user} isRTL={isRTL} setShowProfileMenu={setShowProfileMenu} showProfileMenu={showProfileMenu} handleLogout={handleLogout} cartIcon={cartIcon} />
             </>
           ) : (
-            /* إذا المستخدم غير مسجل دخول */
             <>
               <Link to="/auth/login">
                 <Button variant="primary" className="cursor-pointer" size="md">

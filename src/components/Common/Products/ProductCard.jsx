@@ -95,10 +95,9 @@ const ProductCard = ({ product }) => {
           </button>
         </div>
       </div>
-
-      <div className="p-3 flex items-center justify-between">
+      <div className="p-3 flex !flex-wrap  cursor-pointer items-center justify-between">
+        <p onClick={()=>{navigate(`/product/${product.id}`)}} className="text-start text-md flex-1 !min-w-full text-gray-700">{name}</p>
         <div>
-          <p className="text-sm text-gray-700">{name}</p>
           <p className="text-[15px] font-semibold text-gray-900 text-start !px-0 mt-1">${price}</p>
           <div className="flex mt-1 text-yellow-400 text-sm">
             {"★".repeat(rating)}{"☆".repeat(5 - rating)}

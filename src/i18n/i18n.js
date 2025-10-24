@@ -17,14 +17,14 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: "en",
-    fallbackLng: "en",
+    lng: "ar",
+    fallbackLng: "ar",
     interpolation: {
       escapeValue: false
     }
   });
 
-  const currentLang = i18n.language || 'en';
+  const currentLang = i18n.language || 'ar';
 document.documentElement.lang = currentLang;
 document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
 

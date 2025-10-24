@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import { ProtectedRoute, GuestRoute } from "../components/Common/ProtecteRout";
+import ScrollToTop from "../components/Common/ScrollToTop";
 
 const UserLayout = lazy(() => import("../Layouts/UserLayout"));
 const AuthLayout = lazy(() => import("../Layouts/AuthLayout"));
