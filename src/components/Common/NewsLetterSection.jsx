@@ -28,7 +28,7 @@ export default function NewsletterSection() {
                 placeholder={t('newsletter.placeholder')}
                 className="flex-1 px-1 py-1 md:px-4 md:py-3 bg-transparent outline-none text-sm text-gray-600 "
               />
-              <button className="bg-green-500 rounded-full hover:bg-green-600 text-white px-2 py-2 md:px-6 md:py-3 transition-colors">
+              <button className="bg-green-500 !min-w-fit rounded-full hover:bg-green-600 text-white px-2 py-2 md:px-6 md:py-3 transition-colors">
                 {t('newsletter.button')}
               </button>
             </div>
