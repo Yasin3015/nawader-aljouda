@@ -13,6 +13,7 @@ const Dashboard = () => {
   const isRtl = i18n.language === 'ar';
   const [collapsed, setCollapsed] = useState(false);
   const [notificationsOpen, setNotificationsOpen]= useState(false)
+  const [searchOpen, setSearchOpen]= useState(false)
 
 
   useEffect(() => {
@@ -28,9 +29,9 @@ const Dashboard = () => {
       <div
         className={`flex-1 flex flex-col transition-all duration-300`}
       >
-        <Header collapsed={collapsed} setCollapsed={setCollapsed} notificationsOpen={notificationsOpen} setNotificationsOpen={setNotificationsOpen}/>
+        <Header collapsed={collapsed} searchOpen={searchOpen} setSearchOpen={setSearchOpen} setCollapsed={setCollapsed} notificationsOpen={notificationsOpen} setNotificationsOpen={setNotificationsOpen}/>
 
-        <main className={`flex-1 p-4 lg:p-8 !overflow-x-hidden ${collapsed?"!w-[calc(100vw-4.2rem)]":"!w-[calc(100vw-12.5rem)]"} transition-all`}>
+        <main className={`flex-1 p-4 lg:p-8 !overflow-x-hidden ${collapsed?"!w-[calc(100vw-3rem)]":"!w-[calc(100vw-12.5rem)]"} transition-all`}>
           {/* Banner */}
           <div className="bg-gradient-to-r from-gray-700 to-gray-900 rounded-lg p-6 lg:p-8 mb-6 text-white relative overflow-hidden">
             <div className="relative z-10">
