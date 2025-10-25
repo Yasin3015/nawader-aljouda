@@ -13,7 +13,7 @@ import Dashboard from "../../components/Admin Dashboard/Dashboard";
 const Home = () => {
   return (
     <div>
-      {/* <HeroSection />
+      <HeroSection />
       <GoalSection bg={bg} />
       <ProductListSection />
       <div className="container">
@@ -22,9 +22,7 @@ const Home = () => {
       <BestDeals products={products}/>
       <PartnersCarousel />
       <TestimonialSection />
-      <NewsLetterSection /> */}
-
-      <Dashboard />
+      <NewsLetterSection />
     </div>
   )
 }

@@ -21,19 +21,19 @@ const SaleChart = () => {
         <div className="flex gap-2">
           <button
             onClick={() => setPeriod('weekly')}
-            className={`px-4 py-1.5 rounded text-sm ${period === 'weekly' ? 'bg-gray-100 text-gray-900' : 'text-gray-600'}`}
+            className={`px-4 py-1.5 rounded text-sm ${period === 'weekly' ? 'bg-emerald-600 text-white' : 'text-gray-600 bg-gray-100'}`}
           >
             {t('weekly')}
           </button>
           <button
             onClick={() => setPeriod('monthly')}
-            className={`px-4 py-1.5 rounded text-sm ${period === 'monthly' ? 'bg-emerald-600 text-white' : 'text-gray-600'}`}
+            className={`px-4 py-1.5 rounded text-sm ${period === 'monthly' ? 'bg-emerald-600 text-white' : 'text-gray-600 bg-gray-100'}`}
           >
             {t('monthly')}
           </button>
           <button
             onClick={() => setPeriod('yearly')}
-            className={`px-4 py-1.5 rounded text-sm ${period === 'yearly' ? 'bg-gray-100 text-gray-900' : 'text-gray-600'}`}
+            className={`px-4 py-1.5 rounded text-sm ${period === 'yearly' ? 'bg-emerald-600 text-white' : 'text-gray-600 bg-gray-100'}`}
           >
             {t('yearly')}
           </button>
@@ -56,25 +56,6 @@ const SaleChart = () => {
             <Area type="monotone" dataKey="value" stroke="#10b981" strokeWidth={2} fill="url(#colorGreen)" />
           </AreaChart>
         </ResponsiveContainer>
-
-        {/* replicate small axis labels similar to original */}
-        <div className="absolute bottom-0 left-0 right-0 flex justify-between px-4 text-xs text-gray-600">
-          {/* If monthly or yearly, show data names; else for weekly show Mon..Sun */}
-          {data.map((d, i) => {
-            // limit labels to 6 for spacing like original svg
-            if (i > 5) return null;
-            return <span key={d.name}>{d.name}</span>;
-          })}
-        </div>
-
-        <div className="absolute left-0 top-0 bottom-8 flex flex-col justify-between text-xs text-gray-600">
-          {/* Y labels approximated for look */}
-          <span>$400</span>
-          <span>$300</span>
-          <span>$200</span>
-          <span>$100</span>
-          <span>0</span>
-        </div>
       </div>
     </div>
   );

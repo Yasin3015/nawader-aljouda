@@ -51,6 +51,7 @@
     font-family: var(--font-en);
     background-color: var(--color-white);
     color: var(--color-gray-9);
+    overflow-x: hidden !important;
   }
 
   [dir="rtl"] {

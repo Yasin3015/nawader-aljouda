@@ -2,6 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { recentOrders } from '../../FakeData/ordersData';
+import userPhoto from '../../assets/images/user-dash.png'
 
 const RecentOrders = () => {
   const { t } = useTranslation();
@@ -10,34 +11,27 @@ const RecentOrders = () => {
     <div className="bg-white rounded-lg p-5 shadow-sm">
       <div className="flex justify-between items-center mb-5">
         <h3 className="text-lg font-semibold text-gray-900">{t('recentOrders')}</h3>
-        <button className="text-gray-400 hover:text-gray-600">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
-            <circle cx="8" cy="3" r="1.5"/>
-            <circle cx="8" cy="8" r="1.5"/>
-            <circle cx="8" cy="13" r="1.5"/>
-          </svg>
-        </button>
       </div>
 
       <div className="overflow-x-auto" style={{ maxWidth: '100%' }}>
         <div style={{ minWidth: '600px' }}>
           <table className="w-full">
             <thead>
-              <tr className="border-b">
-                <th className="text-left py-3 px-2">
+              <tr className="bg-[var(--color-green-gray-2)]">
+                <th className="text-start py-3 px-2">
                   <input type="checkbox" className="rounded" />
                 </th>
-                <th className="text-left py-3 px-2 text-sm font-semibold text-emerald-600">{t('product')}</th>
-                <th className="text-left py-3 px-2 text-sm font-semibold text-emerald-600">{t('orderId')}</th>
-                <th className="text-left py-3 px-2 text-sm font-semibold text-emerald-600">{t('date')}</th>
-                <th className="text-left py-3 px-2 text-sm font-semibold text-emerald-600">{t('customerName')}</th>
-                <th className="text-left py-3 px-2 text-sm font-semibold text-emerald-600">{t('status')}</th>
-                <th className="text-left py-3 px-2 text-sm font-semibold text-emerald-600">{t('amount')}</th>
+                <th className="text-start py-3 px-2 text-sm font-semibold text-emerald-600">{t('product')}</th>
+                <th className="text-start py-3 px-2 text-sm font-semibold text-emerald-600">{t('orderId')}</th>
+                <th className="text-start py-3 px-2 text-sm font-semibold text-emerald-600">{t('date')}</th>
+                <th className="text-start py-3 px-2 text-sm font-semibold text-emerald-600">{t('customerName')}</th>
+                <th className="text-start py-3 px-2 text-sm font-semibold text-emerald-600">{t('status')}</th>
+                <th className="text-start py-3 px-2 text-sm font-semibold text-emerald-600">{t('amount')}</th>
               </tr>
             </thead>
             <tbody>
               {recentOrders.map((order, idx) => (
-                <tr key={idx} className="border-b hover:bg-gray-50">
+                <tr key={idx} className="border-t border-t-[var(--color-green-gray-2)] hover:bg-gray-50">
                   <td className="py-3 px-2">
                     <input type="checkbox" className="rounded" />
                   </td>
@@ -46,7 +40,13 @@ const RecentOrders = () => {
                   <td className="py-3 px-2 text-sm">{order.date}</td>
                   <td className="py-3 px-2">
                     <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 bg-gray-300 rounded-full"></div>
+                      <div className='w-8 h-8 rounded-full bg-[var(--color-green-gray-4)]'>
+                        <img 
+                        src={userPhoto}
+                        alt={"user name"}
+                        className='w-8 h-8 rounded-full object-cover'
+                      />
+                      </div>
                       <span className="text-sm">{order.customer}</span>
                     </div>
                   </td>

@@ -18,13 +18,6 @@ const StatCard = ({ titleKey, amount, percentage, isPositive, comparedTextKey, i
     <div className="bg-white rounded-lg p-5 shadow-sm relative">
       <div className="flex justify-between items-start mb-3">
         <span className="text-gray-600 text-sm font-medium">{t(titleKey)}</span>
-        <button className="text-gray-400 hover:text-gray-600">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
-            <circle cx="8" cy="3" r="1.5"/>
-            <circle cx="8" cy="8" r="1.5"/>
-            <circle cx="8" cy="13" r="1.5"/>
-          </svg>
-        </button>
       </div>
       <div className="flex items-center gap-3 mb-2">
         <div className="bg-emerald-100 rounded-full p-2">

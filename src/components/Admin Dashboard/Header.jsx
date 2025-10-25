@@ -4,6 +4,7 @@ import { Home, Menu, X, Search, Bell } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import NotificationsDropdown from './NotificationsDropdown';
 import SearchBar from './SearchBar';
+import LanguageSwitcher from '../Layout/Navbar/LanguageSwitcher'
 
 /*
   Header contains:
@@ -30,26 +31,10 @@ const Header = ({
   };
 
   return (
-    <header className="bg-green-500 shadow-sm sticky top-0 z-30 relative">
+    <header className="bg-gray-100 sticky top-0 z-30 relative">
       <div className="flex items-center justify-between px-4 lg:px-8 py-4">
         <div className="flex items-center gap-4">
-          <button
-            onClick={toggleLang}
-            className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded"
-          >
-            {i18n.language === 'en' ? 'العربية' : 'English'}
-          </button>
-
-          <button
-            className="relative"
-            onClick={() => {
-              setSearchOpen(!searchOpen);
-              setNotificationsOpen(false);
-            }}
-          >
-            <Search className="w-5 h-5 text-gray-600" />
-          </button>
-
+          <LanguageSwitcher />
           <button
             className="relative"
             onClick={() => {
@@ -69,15 +54,15 @@ const Header = ({
               />
             )}
           </div>
-
-          <div className="flex items-center gap-2">
+        </div>
+        <div className='flex items-center justify-start gap-3'>
+            <SearchBar />
+        <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
             <span className="text-sm font-medium hidden sm:block">{t('admin')}</span>
           </div>
-        </div>
+          </div>
       </div>
-
-      <SearchBar isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 };

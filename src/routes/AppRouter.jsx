@@ -1,10 +1,10 @@
 import React, { Suspense, lazy } from "react";
 import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import { ProtectedRoute, GuestRoute } from "../components/Common/ProtecteRout";
-import ScrollToTop from "../components/Common/ScrollToTop";
 
 const UserLayout = lazy(() => import("../Layouts/UserLayout"));
 const AuthLayout = lazy(() => import("../Layouts/AuthLayout"));
+const DashboardLayout = lazy(()=>import('../Layouts/DashboardLayout'))
 
 // 📄 User Pages
 const Home = lazy(() => import("../pages/user/Home"));
@@ -24,6 +24,9 @@ const Signup = lazy(() => import("../pages/auth/Signup"));
 
 // 📁 Not Found Page
 const NotFound = lazy(() => import("../pages/NotFound"));
+
+//DASHBOARD PAGES
+const DashboardPage = lazy(()=> import('../pages/dashboard/DashboardPage'))
 
 // 🌀 Loading Spinner
 const Loading = () => (
@@ -171,6 +174,38 @@ const AppRouter = createBrowserRouter(
             </GuestRoute>
           }
         />
+      </Route>
+
+      {/* ======================== */}
+      {/* 🔐 Dashboard Pages ==== */}
+      {/* ======================== */}
+      <Route
+        path="/dashboard"
+        element={
+          <Suspense fallback={<Loading />}>
+            <DashboardLayout />
+          </Suspense>
+        }
+      >
+        <Route
+          path="home"
+          element={
+            
+              <Suspense fallback={<Loading />}>
+                <DashboardPage />
+              </Suspense>
+          }
+        />
+        {/* <Route
+          path="signup"
+          element={
+            <GuestRoute>
+              <Suspense fallback={<Loading />}>
+                <Signup />
+              </Suspense>
+            </GuestRoute>
+          }
+        /> */}
       </Route>
 
       {/* ======================== */}

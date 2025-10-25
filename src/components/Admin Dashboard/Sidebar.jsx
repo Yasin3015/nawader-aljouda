@@ -2,6 +2,7 @@ import React from 'react';
 import { Home, Package, ShoppingCart, Menu, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import mobileLogo from '../../assets/images/mobileLogo.svg'
 const Sidebar = ({ collapsed, setCollapsed }) => {
   const { t, i18n } = useTranslation();
   const isRtl = i18n.language === 'ar';
@@ -11,15 +12,14 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
   const itemPadding = collapsed ? 'px-1 py-1 justify-center' : 'px-4 py-3';
 
   return (
-    <aside className={`flex-shrink-0 ${widthClass} bg-white shadow-lg transition-all duration-300 overflow-y-auto`}>
+    <aside className={`flex-shrink-0 ${widthClass} bg-gray-100 !sticky !h-screen !top-0 ${!isRtl ? "border-r-1 borfer-r-gray-200":"border-l-1 border-l-gray-200"} transition-all duration-300`}>
       <div className="p-2 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center justify-center gap-2">
           <img
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60'%3E%3Ctext x='10' y='30' font-size='16' fill='%2310b981' font-weight='bold'%3ENawader%3C/text%3E%3Ctext x='10' y='50' font-size='12' fill='%2310b981'%3EAl-Joulan%3C/text%3E%3C/svg%3E"
+            src={mobileLogo}
             alt="Logo"
-            className="h-10"
+            className="w-30"
           />
-          <span className={`${textClass} font-semibold text-emerald-600`}>Knowticed</span>
         </Link>
 
         {/* collapse toggle inside sidebar (shows arrow direction based on RTL) */}
@@ -38,17 +38,17 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
       </div>
 
       <nav className="px-0 space-y-1">
-        <Link to="/" className={`flex items-center gap-1 ${itemPadding} ${collapsed ? 'justify-center' : ''} text-gray-700 hover:bg-gray-100 rounded-lg`}>
+        <Link to="/dashboard" className={`flex items-center gap-1 ${itemPadding} ${collapsed ? 'justify-center' : ''} text-gray-700 hover:bg-gray-100 rounded-lg`}>
           <Home className="w-5 h-5" />
           <span className={`font-medium ${textClass}`}>{t('dashboard')}</span>
         </Link>
 
-        <Link to="/products" className={`flex items-center gap-3 ${itemPadding} ${collapsed ? 'justify-center' : ''} text-gray-700 hover:bg-gray-100 rounded-lg`}>
+        <Link to="/dashboard/products" className={`flex items-center gap-3 ${itemPadding} ${collapsed ? 'justify-center' : ''} text-gray-700 hover:bg-gray-100 rounded-lg`}>
           <Package className="w-5 h-5" />
           <span className={`font-medium ${textClass}`}>{t('allProducts')}</span>
         </Link>
 
-        <Link to="/orders" className={`flex items-center gap-3 ${itemPadding} ${collapsed ? 'justify-center' : ''} text-gray-700 hover:bg-gray-100 rounded-lg`}>
+        <Link to="/dashboard/orders" className={`flex items-center gap-3 ${itemPadding} ${collapsed ? 'justify-center' : ''} text-gray-700 hover:bg-gray-100 rounded-lg`}>
           <ShoppingCart className="w-5 h-5" />
           <span className={`font-medium ${textClass}`}>{t('orders')}</span>
         </Link>

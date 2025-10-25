@@ -20,9 +20,6 @@ const NotificationsDropdown = ({ isOpen, onClose }) => {
 
       {/* dropdown */}
       <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-96 bg-white rounded-2xl shadow-2xl z-50 animate-slideDown border border-gray-200">
-        {/* السهم */}
-        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 
-          border-l-8 border-l-transparent border-r-8 border-r-transparent border-b-8 border-b-white shadow-sm"></div>
 
         <div className="flex items-center justify-between p-6 border-b">
           <h2 className="text-xl font-bold text-gray-900">{t('notifications')}</h2>
