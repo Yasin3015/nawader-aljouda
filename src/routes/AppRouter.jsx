@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import { ProtectedRoute, GuestRoute } from "../components/Common/ProtecteRout";
+import CreateProductPage from "../components/Admin Dashboard/CreateProductPage";
 
 const UserLayout = lazy(() => import("../Layouts/UserLayout"));
 const AuthLayout = lazy(() => import("../Layouts/AuthLayout"));
@@ -27,7 +28,10 @@ const NotFound = lazy(() => import("../pages/NotFound"));
 
 //DASHBOARD PAGES
 const DashboardPage = lazy(()=> import('../pages/dashboard/DashboardPage'))
-
+const Products = lazy(()=> import('../pages/dashboard/Products'))
+const AddProduct = lazy(()=> import('../pages/dashboard/AddProduct'))
+const Orders = lazy(()=> import('../pages/dashboard/Orders'))
+const OrderDetails = lazy(()=> import('../pages/dashboard/OrderDetails'))
 // 🌀 Loading Spinner
 const Loading = () => (
   <div className="flex justify-center items-center min-h-screen text-[var(--color-primary)]">
@@ -188,7 +192,7 @@ const AppRouter = createBrowserRouter(
         }
       >
         <Route
-          path="home"
+          path=""
           element={
             
               <Suspense fallback={<Loading />}>
@@ -196,16 +200,38 @@ const AppRouter = createBrowserRouter(
               </Suspense>
           }
         />
-        {/* <Route
-          path="signup"
+        <Route
+          path="products"
           element={
-            <GuestRoute>
-              <Suspense fallback={<Loading />}>
-                <Signup />
-              </Suspense>
-            </GuestRoute>
+            <Suspense fallback={<Loading />}>
+              <Products />
+            </Suspense>
           }
-        /> */}
+        />
+        <Route
+          path="create-product"
+          element={
+            <Suspense fallback={<Loading />}>
+              <AddProduct />
+            </Suspense>
+          }
+        />
+        <Route
+          path="orders"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Orders />
+            </Suspense>
+          }
+        />
+        <Route
+          path="order-details"
+          element={
+            <Suspense fallback={<Loading />}>
+              <OrderDetails />
+            </Suspense>
+          }
+        />
       </Route>
 
       {/* ======================== */}

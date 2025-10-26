@@ -515,5 +515,184 @@
     "recentSearches": "Recent searches",
     "newPurchaseTitle": "New purchase is done! 🎉",
     "aboutToSoldOutTitle": "About to Sold out!",
-    "newItemAdded": "New item is Added successfully"
+    "newItemAdded": "New item is Added successfully",
+    "products": {
+      "addProduct": "Add Product",
+      "details": "Details",
+      "sales": "Sales",
+      "remainingProducts": "Remaining Products",
+      "moreOptions": "More options",
+      "addToBestSeller": "Add to Best Seller",
+      "editProduct": "Edit Product",
+      "deleteProduct": "Delete Product",
+      "showing": "Showing",
+      "results": "results",
+      "noProducts": "No products found",
+      "tryDifferentSearch": "Try adjusting your search or filters"
+    },
+    "categories": {
+      "addCategory": "Add Category",
+      "addNewCategory": "Add New Category",
+      "categoryName": "Category Name",
+      "categoryImage": "Category Image",
+      "enterCategoryName": "Enter category name",
+      "clickToUpload": "Click to upload image",
+      "imageFormats": "PNG, JPG, WEBP up to 5MB",
+      "adding": "Adding...",
+      "categoryAdded": "Category added successfully"
+    },
+    "common": {
+      "cancel": "Cancel"
+    },
+    "product": {
+      "createProduct": "Create Product",
+      "editProduct": "Edit Product",
+      "updateProduct": "Update Product",
+      "createProductDescription": "Fill in the details below to create a new product",
+      "editProductDescription": "Update the product information below",
+      "basicInfo": "Basic Info",
+      "numbersDetails": "Numbers & Details",
+      "additionalInfo": "Additional Info",
+      "productGallery": "Product Gallery",
+      "productNameEn": "Product Name (English)",
+      "productNameAr": "Product Name (Arabic)",
+      "enterProductNameEn": "Enter product name in English",
+      "enterProductNameAr": "أدخل اسم المنتج بالعربية",
+      "descriptionEn": "Description (English)",
+      "descriptionAr": "Description (Arabic)",
+      "enterDescriptionEn": "Enter product description in English",
+      "enterDescriptionAr": "أدخل وصف المنتج بالعربية",
+      "category": "Category",
+      "selectCategory": "Select category",
+      "price": "Price",
+      "enterPrice": "000",
+      "stockQuantity": "Stock Quantity",
+      "enterStockQuantity": "000",
+      "tagEn": "Tag (English)",
+      "tagAr": "Tag (Arabic)",
+      "enterTagEn": "tag 1",
+      "enterTagAr": "وسم 1",
+      "addShipping": "Add Shipping",
+      "shippingAmount": "Shipping Amount",
+      "enterShippingAmount": "000",
+      "discount": "Discount",
+      "discountPercent": "Percent",
+      "finalPrice": "Final Price",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "atLeastOneImage": "Please upload at least one image",
+      "saving": "Saving...",
+      "productCreated": "Product created successfully",
+      "productUpdated": "Product updated successfully",
+      "dropMainImage": "Drop your main image here or browse",
+      "dropImageHere": "Drop your images here or browse",
+      "imageFormats": "JPEG, PNG, or WebP are allowed",
+      "galleryTitle": "Product Gallery",
+      "mainImage":"Main product's Image",
+      "maxImagesReached": "You can only upload up to {{max}} images",
+      "imagesCount": "{{current}} of {{max}} images uploaded"
+    },
+    "errors": {
+    "nameEnMin": "Product name (English) must be at least 2 characters",
+    "nameArMin": "Product name (Arabic) must be at least 2 characters",
+    "descriptionEnMin": "Description (English) must be at least 10 characters",
+    "descriptionArMin": "Description (Arabic) must be at least 10 characters",
+    "categoryRequired": "Please select a category",
+    "priceRequired": "Price is required",
+    "pricePositive": "Price must be a positive number",
+    "stockRequired": "Stock quantity is required",
+    "stockNonNegative": "Stock quantity must be 0 or more",
+    "shippingAmountRequired": "Shipping amount is required when shipping is enabled",
+    "discountPercentRequired": "Discount percent is required when discount is enabled",
+    "atLeastOneImage": "Please upload at least one image"
+  },
+  "orders": {
+      "title": "Orders",
+      "description": "Manage and track all your orders",
+      "all": "All",
+      "completed": "Completed",
+      "onTheWay": "On the Way",
+      "processing": "Processing",
+      "canceled": "Canceled",
+      "orderId": "Order ID",
+      "date": "Date",
+      "total": "Total",
+      "payment": "Payment",
+      "items": "Items",
+      "customerName": "Customer Name",
+      "status": "Status",
+      "details": "Details",
+      "filter": "Filter",
+      "filterByDate": "Filter by Date",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "deleteSelected": "Delete Selected",
+      "deleteAll": "Delete All",
+      "selectedItems": "{{count}} items selected",
+      "confirmDeleteSelected": "Are you sure you want to delete {{count}} selected orders?",
+      "confirmDeleteAll": "Are you sure you want to delete all orders?",
+      "noOrders": "No orders found",
+      "tryDifferentFilter": "Try adjusting your filters or search"
+    },
+    "confirmMessage": "Are you sure about this action?",
+  "confirmSubMessage": "This action cannot be undone.",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "deleteProduct": "Delete Product",
+  "confirmDeleteProduct": "Are you sure you want to delete this product?",
+  "orderDetails": {
+    "customer": {
+      "title": "Customer",
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "orderInfo": {
+      "title": "Order Info",
+      "shipping": "Shipping",
+      "paymentMethod": "Payment Method",
+      "status": "Status"
+    },
+    "deliverTo": {
+      "title": "Deliver to",
+      "address": "Address"
+    },
+    "paymentInfo": {
+      "title": "Payment Info",
+      "businessName": "Business name",
+      "phone": "Phone"
+    },
+    "note": {
+      "title": "Note",
+      "placeholder": "Type some notes"
+    },
+    "productList": {
+      "product": "Product",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total"
+    },
+    "header": {
+      "orderId": "Orders ID",
+      "changeStatus": "Change Status",
+      "save": "Save"
+    },
+    "status": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
+    },
+    "products": {
+      "title": "Products"
+    },
+    "confirmMessage": "هل أنت متأكد من هذا الإجراء؟",
+  "confirmSubMessage": "لا يمكن التراجع عن هذه العملية بعد تنفيذها.",
+  "cancel": "إلغاء",
+  "delete": "حذف",
+  "deleteProduct": "حذف المنتج",
+  "confirmDeleteProduct": "هل أنت متأكد أنك تريد حذف المنتج؟"
+  }
+
 }

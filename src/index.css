@@ -58,6 +58,92 @@
     font-family: var(--font-ar);
   }
 
+  /* ============= Print Styles - Add to index.css ============= */
+
+@media print {
+  /* Hide everything by default */
+  body * {
+    visibility: hidden;
+  }
+  
+  /* Hide sidebar, footer, breadcrumb, and other elements */
+  aside,
+  footer,
+  nav,
+  .sidebar,
+  .breadcrumb,
+  .breadcrumbs,
+  header:not(.order-page-content header),
+  [class*="sidebar"],
+  [class*="Sidebar"],
+  [id*="sidebar"],
+  [id*="Sidebar"],
+  [class*="footer"],
+  [class*="Footer"],
+  [id*="footer"],
+  [id*="Footer"],
+  [class*="breadcrumb"],
+  [class*="Breadcrumb"],
+  [id*="breadcrumb"],
+  [id*="Breadcrumb"] {
+    display: none !important;
+  }
+  
+  /* Show only order page content */
+  .order-page-content,
+  .order-page-content * {
+    visibility: visible;
+  }
+  
+  /* Reset positioning for print */
+  .order-page-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: white;
+    padding: 20px;
+  }
+  
+  /* Ensure proper page breaks */
+  .order-page-content > * {
+    page-break-inside: avoid;
+  }
+  
+  /* Remove shadows and adjust colors for print */
+  .order-page-content .shadow-sm,
+  .order-page-content .shadow {
+    box-shadow: none !important;
+    border: 1px solid #e5e7eb;
+  }
+  
+  /* Optimize table for print */
+  .order-page-content table {
+    page-break-inside: auto;
+  }
+  
+  .order-page-content tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+  
+  /* Ensure buttons don't show in print */
+  .order-page-content button:not(.no-print-hide) {
+    display: none !important;
+  }
+  
+  /* Keep status badge visible */
+  .order-page-content .bg-orange-500 {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  /* Remove page margins */
+  @page {
+    margin: 0.5cm;
+  }
+}
+
   /* في ملف CSS منفصل */
   @keyframes infinite-scroll {
     from { transform: translateX(0); }

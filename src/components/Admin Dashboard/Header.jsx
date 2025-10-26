@@ -22,13 +22,7 @@ const Header = ({
   searchOpen,
   setSearchOpen
 }) => {
-  const { t, i18n } = useTranslation();
-  const isRtl = i18n.language === 'ar';
-
-  const toggleLang = () => {
-    const next = i18n.language === 'en' ? 'ar' : 'en';
-    i18n.changeLanguage(next);
-  };
+  const { t } = useTranslation();
 
   return (
     <header className="bg-gray-100 sticky top-0 z-30 relative">
